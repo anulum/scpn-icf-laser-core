@@ -4,16 +4,21 @@
       "evidence_maturity": "computational_prototype",
       "evidence_pointer": "VALIDATION.md#device-configuration-model",
       "identifier": "device_configuration_model"
+    },
+    {
+      "evidence_maturity": "computational_prototype",
+      "evidence_pointer": "VALIDATION.md#diagnostic-and-clock-semantics",
+      "identifier": "diagnostic_clock_semantics"
     }
   ],
   "claims": [],
   "evidence_maturity": "computational_prototype",
-  "implemented_capability_count": 1,
+  "implemented_capability_count": 2,
   "project": "SCPN-ICF-LASER-CORE",
   "schema": "scpn.capability-inventory.v1",
   "schema_version": "1.0.0",
   "source": {
     "manifest_path": "reactor-domain.json",
-    "manifest_sha256": "d76028f631cd18eee2801696dd90bbc32f28fae30923f0adebe51d7c27e7e257"
+    "manifest_sha256": "0d0d56b5494a8aed24edb98499bf8d809dfbef6d25e02448f0336e3593f2b6c8"
   }
 }

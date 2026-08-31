@@ -10,6 +10,11 @@
       "evidence_maturity": "computational_prototype",
       "evidence_pointer": "VALIDATION.md#device-configuration-model",
       "identifier": "device_configuration_model"
+    },
+    {
+      "evidence_maturity": "computational_prototype",
+      "evidence_pointer": "VALIDATION.md#diagnostic-and-clock-semantics",
+      "identifier": "diagnostic_clock_semantics"
     }
   ],
   "configurations": [
@@ -53,7 +58,7 @@
     "manifest_path": "reactor-domain.json",
     "manifest_schema": "scpn.reactor-domain.v1",
     "manifest_schema_version": "1.0.0",
-    "manifest_sha256": "d76028f631cd18eee2801696dd90bbc32f28fae30923f0adebe51d7c27e7e257",
+    "manifest_sha256": "0d0d56b5494a8aed24edb98499bf8d809dfbef6d25e02448f0336e3593f2b6c8",
     "repository": "SCPN-ICF-LASER-CORE"
   },
   "spo_registry": {
