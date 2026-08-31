@@ -1,13 +1,19 @@
 {
-  "capabilities": [],
+  "capabilities": [
+    {
+      "evidence_maturity": "computational_prototype",
+      "evidence_pointer": "VALIDATION.md#device-configuration-model",
+      "identifier": "device_configuration_model"
+    }
+  ],
   "claims": [],
-  "evidence_maturity": "architecture_only",
-  "implemented_capability_count": 0,
+  "evidence_maturity": "computational_prototype",
+  "implemented_capability_count": 1,
   "project": "SCPN-ICF-LASER-CORE",
   "schema": "scpn.capability-inventory.v1",
   "schema_version": "1.0.0",
   "source": {
     "manifest_path": "reactor-domain.json",
-    "manifest_sha256": "8fbfb035ff1b70c93314225fb99b5b783571380857008cb51a0747b63e95647a"
+    "manifest_sha256": "d76028f631cd18eee2801696dd90bbc32f28fae30923f0adebe51d7c27e7e257"
   }
 }

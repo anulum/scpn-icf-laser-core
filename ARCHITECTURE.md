@@ -12,10 +12,10 @@ SCPN ICF Laser Core — Architecture summary
 
 `SCPN-ICF-LASER-CORE` is the device-family owner for laser-driven inertial
 confinement fusion systems (direct drive, indirect drive, and staged
-fast/shock ignition) inside the SCPN Reactor Systems Research Group. The
-repository is currently `architecture_only`: it defines the device
-boundary, its ecosystem contracts, and the validation tooling that enforces
-both, and it implements no reactor capability.
+fast/shock ignition) inside the SCPN Reactor Systems Research Group. The repository holds one implemented
+capability — the device configuration model at `computational_prototype`
+(`src/scpn_icf_laser_core/`, ADR 0002) — alongside the device boundary, its
+ecosystem contracts, and the validation tooling that enforces both.
 
 The authoritative architecture record is
 [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). The ownership decision and

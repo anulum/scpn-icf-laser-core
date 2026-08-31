@@ -23,27 +23,32 @@ this repository until it appears in the capability inventory with evidence.
 - Local and workflow gate definitions (lint, typing, tests, coverage,
   REUSE, security audit, SBOM, documentation checks).
 
-## Planned (no implementation exists; ordering is not a commitment)
+- **Device configuration model** (landed 2026-08-31) — validated
+  laser-driver and target objects for `laser_icf_direct_drive`,
+  `laser_icf_fast_or_shock_ignition`, and `laser_icf_indirect_drive`
+  with hard drive-scheme class invariants (hohlraum and ignitor-pulse
+  flags), the on-target intensity relation, a direct-drive LPI advisory
+  (Craxton et al. 2015), canonical digests, and the SPO registry data
+  pin; `computational_prototype` (ADR 0002,
+  `VALIDATION.md#device-configuration-model`). Pulse-shape and
+  beam-geometry envelopes remain future work under the same capability.
 
-1. **Device configuration model** — typed configuration policy for the
-   laser-ICF family (drive-scheme classes, pulse-shape and beam-geometry
-   envelopes, target and metrology contracts), with evidence-maturity
-   target `computational_prototype`.
-2. **Diagnostic and clock semantics** — declared drive, symmetry, and burn
+## Planned (no implementation exists; ordering is not a commitment)
+1. **Diagnostic and clock semantics** — declared drive, symmetry, and burn
    channels with the bang-time anchor and picosecond clock identities,
    aligned with the SCPN Phase Orchestrator semantic profile.
-3. **Safety-envelope declaration** — machine-readable operational envelope
+2. **Safety-envelope declaration** — machine-readable operational envelope
    (fluence, repetition, target-handling bounds) consumed by the CONTROL
    adapter contract.
-4. **CONTROL adapter implementation** — device-owned adapter against the
+3. **CONTROL adapter implementation** — device-owned adapter against the
    published specification, with replay fixtures and HIL evidence,
    targeting `control_research_ready` only after replay and HIL
    acceptance.
-5. **Solver seam consumption** — versioned consumption of exact
+4. **Solver seam consumption** — versioned consumption of exact
    `SCPN-FUSION-CORE` seams for implosion, radiation-transport, and burn
    surfaces, strictly after the family migration gate proves exact
    replacement; no solver code is copied.
-6. **Facility-data correlation** — preregistered acceptance contracts
+5. **Facility-data correlation** — preregistered acceptance contracts
    against identified facility or published experimental data, targeting
    `experiment_correlated` per capability.
 
