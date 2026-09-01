@@ -8,6 +8,11 @@ Contact: www.anulum.li | protoscience@anulum.li
 SCPN ICF Laser Core — README
 -->
 
+<div align="center">
+  <img src="docs/assets/repo_header.png"
+       alt="SCPN ICF Laser Core — Light Becomes Pressure">
+</div>
+
 # SCPN ICF Laser Core
 
 Governed device-family repository for laser-driven inertial confinement
