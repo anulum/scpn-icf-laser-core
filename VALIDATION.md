@@ -381,21 +381,31 @@ What is exercised, all under the same coverage gate:
 Measured, and recorded because it does not transfer from the
 metre-scale families:
 
-- **The ring count has a ceiling set by the back-end.** Up to 32 rings
+- **The ring count has a ceiling set by the back-end.** Up to 39 rings
   the revolved solid's volume agrees with the analytic frustum stack to
-  7e-15 relative; at 48 rings it disagrees by 3.5e-5, at 64 by 1.5e-5
-  and at 128 by 6.5e-5, thousands of times the library's 1e-9 measure
-  tolerance and not converging. The boundary is where the shortest
-  generating segment falls below about 5e-6 m. Cylindrical bodies are
-  unaffected. Nothing was loosened: the evidence kernel refused the
-  first build, and a test asserts that refusal at 48 rings.
+  7e-15 relative; at 40 the fuel shell disagrees by 1.7e-4, and above
+  that the departure neither disappears nor converges — 3.5e-5 at 48
+  rings, 1.5e-5 at 64 and 6.5e-5 at 128, thousands of times the
+  library's 1e-9 measure tolerance. Cylindrical bodies are unaffected.
+  Nothing was loosened: the evidence kernel refuses, and a test asserts
+  that refusal at 40 rings, the step immediately above the ceiling.
+- **The ceiling moves with the body's radius, and was measured across
+  radii rather than inherited.** On solid spheres the last exact ring
+  count is 33 at 1.0 mm, 39 at 1.503 mm, 41 at 1.8 mm, 45 at 2.34 mm,
+  49 at 3.0 mm and 57 at 5.0 mm; at 10 mm and above nothing fails up to
+  120 rings, which is why no metre-scale family meets the ceiling at
+  all. No single length is constant at the boundary — the shortest
+  generating segment there runs from 9.2e-5 m to 2.7e-4 m over those
+  radii — so the mechanism is the back-end's and is not derived here.
+  Every family measures its own ceiling.
 - **The angular deflection does not bind at this scale.** Between 0.5
   and 0.1 radians every body's deficit is identical to four significant
   figures.
 - **The linear deflection buys a bound, not accuracy.** 2e-7 m is the
-  tightest bound the bodies clear — the vapour core sits at 0.57 of its
-  bound — and at 1e-7 m the vapour core exceeds its bound by fifteen per
-  cent, which a test asserts. At 1e-8 m the back-end refuses outright.
+  tightest bound the bodies clear — the vapour core sits at 0.56 of its
+  bound — and at 1e-7 m the vapour core exceeds its bound by thirteen
+  per cent, which a test asserts. At 1e-8 m the back-end refuses
+  outright.
 - The deficit bound of each body uses that body's **outer** radius,
   which is the tightest bound a body of revolution admits; a sphere's
   circles run to zero at the poles and would make the bound unbounded.

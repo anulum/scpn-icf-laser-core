@@ -12,6 +12,24 @@ SCPN ICF Laser Core — CHANGELOG
 
 ## [Unreleased]
 
+### Fixed
+
+- Tier-G2 ring count raised from 32 to the measured back-end ceiling of
+  39 for this family's bodies, with the tier-G1 anchor following it so
+  both tiers share one resolution. The refusal test now asserts 40
+  rings, the step immediately above the ceiling, instead of 48.
+- Withdrawn from ADR 0006, `docs/DEVICE_3D_MODEL_CONTRACT.md` and
+  `VALIDATION.md`: the statement that 32 rings is the ceiling, and the
+  statement that the boundary sits where the shortest generating segment
+  falls below about 5e-6 m. Neither was measured. The boundary is a
+  function of the body's radius — measured at 33 rings for 1.0 mm and 57
+  for 5.0 mm — and no single length is constant across it, the shortest
+  generating segment there running from 9.2e-5 m to 2.7e-4 m. ADR 0006
+  carries a dated correction subsection recording what was withdrawn.
+- Measured percentages corrected where the ring count moved them: the
+  vapour core sits at 0.56 of its deficit bound, and exceeds it by 13 %
+  at the next tighter linear deflection.
+
 ### Added
 
 - Diagnostic-plan depth: per-channel signal inventories, frame

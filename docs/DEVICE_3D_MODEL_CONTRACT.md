@@ -90,7 +90,7 @@ the profile. They are independent, and passing one where the other
 belongs builds a valid body of the wrong shape that no gate downstream
 would notice.
 
-Defaults for tier G2: 8 reference segments, 32 rings, a linear
+Defaults for tier G2: 8 reference segments, 39 rings, a linear
 deflection of 2e-7 m and an angular deflection of 0.1 rad.
 
 ## Exports and identity
@@ -107,10 +107,14 @@ one.
 
 ## Declared limits
 
-- **32 rings is a ceiling at this scale, not a preference.** Above it
-  the back-end's own volume measure departs from the analytic form by
-  more than four orders of magnitude beyond the library's tolerance. The
-  evidence kernel refuses.
+- **39 rings is this family's measured ceiling, not a preference.** One
+  step above it the back-end's own volume measure departs from the
+  analytic form by five orders of magnitude beyond the library's
+  tolerance, and the evidence kernel refuses. The ceiling is a function
+  of the body's radius — measured, it is 33 rings at 1.0 mm and 57 at
+  5.0 mm — so it is a fact about these bodies and transfers to no other
+  family. A consumer building at a different radius must measure its
+  own.
 - **2e-7 m is the tightest linear deflection the bodies clear.** One
   step tighter, the vapour core exceeds its declared bound.
 - The faceting deficit bound of each body is `2 d / r` at that body's

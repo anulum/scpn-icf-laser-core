@@ -260,18 +260,32 @@ def test_the_enclosure_area_lands_inside_the_printed_band() -> None:
     assert lowest <= ratio <= highest
 
 
+def test_swapping_the_anchor_resolutions_is_refused_by_the_segment_rule() -> None:
+    """At the anchor counts the swap happens to be caught, and only there.
+
+    Segments must be a multiple of eight and the anchor ring count is
+    not one, so handing the ring count to the segments is refused. That
+    is a property of these two particular numbers, not a guard against
+    the mistake: the next test builds the same swap from two counts that
+    are both legal and nothing objects.
+    """
+    with pytest.raises(DeviceGeometryError, match="multiple of 8"):
+        build_device_model(
+            anchor_configuration(), anchor_capsule(), ANCHOR_RINGS, ANCHOR_SEGMENTS
+        )
+
+
 def test_the_rings_and_the_segments_are_not_interchangeable() -> None:
-    """Swapping the two resolutions builds a different body.
+    """Swapping two legal resolutions builds a different body, unnoticed.
 
     The rings sample the profile and the segments sample the
-    revolution. Nothing in either count would object to being handed the
-    other, and no gate downstream would notice, so the difference is
-    asserted here.
+    revolution. Where both counts are legal, nothing in either would
+    object to being handed the other and no gate downstream would
+    notice, so the difference is asserted here.
     """
-    swapped = build_device_model(
-        anchor_configuration(), anchor_capsule(), ANCHOR_RINGS, ANCHOR_SEGMENTS
-    )
-    assert swapped.digest_sha256() != direct_model().digest_sha256()
+    upright = build_device_model(anchor_configuration(), anchor_capsule(), 8, 16)
+    swapped = build_device_model(anchor_configuration(), anchor_capsule(), 16, 8)
+    assert swapped.digest_sha256() != upright.digest_sha256()
 
 
 def test_a_finer_profile_encloses_more_volume() -> None:

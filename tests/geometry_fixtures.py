@@ -72,9 +72,10 @@ DECLARED_CASE_WALL_THICKNESS_UM: Final = 30.0
 
 # --- Tessellation resolutions the tests build at ---
 # Independent knobs: the segments set what the revolution keeps of the
-# profile, the rings set the profile itself.
+# profile, the rings set the profile itself. The ring count is this
+# family's own measured back-end ceiling and both tiers share it.
 ANCHOR_SEGMENTS: Final = 8
-ANCHOR_RINGS: Final = 32
+ANCHOR_RINGS: Final = 39
 
 # --- Derived from the anchors above, never typed ---
 ANCHOR_CAPSULE_RADIUS_M: Final = PRINTED_TARGET_RADIUS_UM * MICROMETRE_M

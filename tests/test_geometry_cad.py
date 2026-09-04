@@ -46,9 +46,14 @@ from scpn_icf_laser_core.geometry import (
     build_device_cad,
 )
 
-#: Ring count measured to break the back-end's own volume measure at this
-#: radius. Thirty-two is exact; forty-eight is not.
-RINGS_ABOVE_THE_CEILING = 48
+#: Ring count measured to break the back-end's own volume measure on
+#: this family's bodies. One step above the default: thirty-nine is
+#: exact, forty is not. Asserting the step immediately above the ceiling
+#: is what makes the ceiling a measurement rather than a memory; a
+#: number far above it would pass this test while leaving the ceiling
+#: itself unlocated, which is how the superseded count of thirty-two
+#: survived unchallenged.
+RINGS_ABOVE_THE_CEILING = 40
 #: Linear deflection measured not to pass: one step below the default,
 #: the vapour core exceeds its declared bound.
 DEFLECTION_BELOW_WHAT_PASSES_M = 1.0e-7
@@ -114,7 +119,7 @@ def test_every_faceted_body_clears_its_declared_deficit_bound() -> None:
     """The faceting loses less volume than the declared bound allows.
 
     Measured at the module's deflections: the worst body is the vapour
-    core, at 0.57 of its bound.
+    core, at 0.56 of its bound.
     """
     for body in indirect_cad().bodies:
         assert body.faceted_volume_relative_deficit <= (
@@ -134,11 +139,12 @@ def test_every_faceted_body_agrees_with_its_tier_one_twin() -> None:
 def test_the_ring_count_the_back_end_cannot_hold_is_refused() -> None:
     """Above the measured ceiling the solid is wrong and the build refuses.
 
-    At this radius the revolve is exact to 7e-15 up to thirty-two rings
-    and departs by 3.5e-5 at forty-eight, which is far above the
-    library's measure tolerance. Nothing here was loosened to admit it:
-    the evidence kernel refuses, naming the body and the bound, and this
-    test is the record that the refusal is real rather than theoretical.
+    On this family's bodies the revolve is exact to 7e-15 up to
+    thirty-nine rings and the fuel shell departs by 1.7e-4 at forty,
+    which is five orders of magnitude above the library's measure
+    tolerance. Nothing here was loosened to admit it: the evidence
+    kernel refuses, naming the body and the bound, and this test is the
+    record that the refusal is real rather than theoretical.
     """
     with pytest.raises(DeviceGeometryError, match="volume_relative_error"):
         build_device_cad(
@@ -154,7 +160,7 @@ def test_the_next_tighter_deflection_does_not_pass() -> None:
     """The declared deflection is the tightest bound the bodies clear.
 
     One step below it the vapour core's deficit exceeds its own bound by
-    about fifteen per cent. Recording that here is what makes the choice
+    about thirteen per cent. Recording that here is what makes the choice
     of deflection falsifiable rather than a preference.
     """
     with pytest.raises(DeviceGeometryError, match="faceted_volume_relative_deficit"):

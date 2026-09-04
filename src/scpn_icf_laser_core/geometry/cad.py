@@ -20,22 +20,32 @@ sibling. The scale does not merely shift the numbers; it puts a ceiling
 on the ring count that no metre-scale family meets.**
 
 The ring count is bounded from above by the back-end. Up to and
-including thirty-two rings the revolved solid's own volume agrees with
-the analytic frustum stack to 7e-15 relative. From forty-eight rings it
-does not: the sphere and the shell both report 3.5e-5, then 1.5e-5 at
-sixty-four and 6.5e-5 at a hundred and twenty-eight — thousands of times
-the library's 1e-9 measure tolerance, and not converging. The boundary
-sits where the shortest generating segment of the profile falls below
-about 5e-6 m, which at this radius happens between thirty-two rings and
-forty-eight. The cylindrical bodies are unaffected at every count.
+including thirty-nine rings the revolved solid's own volume agrees with
+the analytic frustum stack to 7e-15 relative. At forty it does not: the
+fuel shell reports 1.7e-4, and above that the departure neither
+disappears nor converges — 3.5e-5 at forty-eight, 1.5e-5 at sixty-four,
+6.5e-5 at a hundred and twenty-eight, all thousands of times the
+library's 1e-9 measure tolerance. The cylindrical bodies are unaffected
+at every count.
 
-Nothing was loosened to accommodate that. The evidence kernel refused
-the first build outright, naming the body and the bound, which is what
-it is for; the ring count came down to thirty-two, where the solids are
-exact again. A later family whose bodies are smaller still will meet
-the same ceiling sooner, and this is the record of it.
+**Where that boundary sits was measured across radii, and it moves.**
+For a solid sphere the last exact ring count is 33 at a radius of
+1.0 mm, 39 at 1.503 mm, 41 at 1.8 mm, 45 at 2.34 mm, 49 at 3.0 mm and
+57 at 5.0 mm; at 10 mm and above nothing fails up to a hundred and
+twenty rings, which is why no metre-scale family in this group meets
+the ceiling at all. **No single length is constant at that boundary**:
+the shortest generating segment there runs from 9.2e-5 m to 2.7e-4 m
+over the same radii, so it is not the quantity that sets it. The
+mechanism belongs to the back-end and is not derived here; what is
+recorded is the measurement and its consequence, which is that **each
+family must measure its own ceiling and may not inherit a sibling's.**
 
-Below that ceiling the deflections behave as follows. The angular
+Nothing was loosened to accommodate that. The evidence kernel refuses,
+naming the body and the bound, which is what it is for; the ring count
+is the largest the bodies of this family are exact at, and a test
+asserts the refusal one step above it.
+
+At that ceiling the deflections behave as follows. The angular
 deflection does not bind: between 0.5 and 0.1 radians the volume
 deficit of every body is identical to four significant figures and only
 the facet count moves. The linear deflection does not set the deficit
@@ -45,8 +55,8 @@ outright with ``Standard_NumericError``.
 
 So the linear deflection is chosen as the tightest bound that the
 bodies actually clear, and 2e-7 m is that value: the worst body, the
-vapour core, sits at 0.57 of its bound, and the next step down, 1e-7 m,
-does not pass at all — the vapour core exceeds its bound by fifteen per
+vapour core, sits at 0.56 of its bound, and the next step down, 1e-7 m,
+does not pass at all — the vapour core exceeds its bound by thirteen per
 cent. This is not the widest margin available; a margin is only as good
 as the bound it is a margin on.
 
@@ -138,11 +148,12 @@ CAD_MODEL_NON_CLAIMS: Final = (
 
 #: Reference tessellation the B-rep bodies are checked against.
 DEFAULT_REFERENCE_MESH_SEGMENTS: Final = 8
-#: Polar steps of the spherical profiles. Measured twice over: this is
-#: the knob that moves the faceting deficit, and it is also the one the
-#: back-end limits, refusing to revolve an exact solid beyond
-#: thirty-two rings at this radius.
-DEFAULT_SPHERE_RINGS: Final = 32
+#: Polar steps of the spherical profiles, at the measured ceiling of
+#: this family's own bodies: the back-end revolves an exact solid up to
+#: thirty-nine rings here and not beyond. The ceiling is a function of
+#: the body's radius and was measured across radii rather than inherited,
+#: so a sibling family's count says nothing about this one's.
+DEFAULT_SPHERE_RINGS: Final = 39
 #: Mesher deflections, both set by measurement on this family's own
 #: millimetre scale rather than copied from a metre-scale sibling.
 DEFAULT_LINEAR_DEFLECTION_M: Final = 2.0e-7
