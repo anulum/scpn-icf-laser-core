@@ -73,7 +73,7 @@
     "manifest_path": "reactor-domain.json",
     "manifest_schema": "scpn.reactor-domain.v1",
     "manifest_schema_version": "1.0.0",
-    "manifest_sha256": "41521eb929554959b560fa78efc5b0ecbbdaa441381cf90705d888bdbdbd7f86",
+    "manifest_sha256": "fc2b54e1de8553c336de6997576c30b5e6278f295a00b6c28f307bf370af4d06",
     "repository": "SCPN-ICF-LASER-CORE"
   },
   "spo_registry": {
