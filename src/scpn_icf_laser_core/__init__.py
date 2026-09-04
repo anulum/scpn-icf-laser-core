@@ -9,15 +9,17 @@
 """Device capability models of the SCPN laser-ICF device family.
 
 Public surface of the ``device_configuration_model``,
-``diagnostic_clock_semantics`` and ``level0_device_physics``
-capabilities at ``computational_prototype`` maturity: validated
-parameter objects, synthetic diagnostic and clock declarations aligned
-with the pinned SPO observability catalogue, the published closed-form
-ignition condition and implosion definitions evaluated on a declared
-capsule and implosion, documented consistency estimates, canonical
-serialisation with SHA-256 digests, and data-only pins to the SPO
-registries. No claim about any real machine or diagnostic is made
-anywhere in this package.
+``diagnostic_clock_semantics``, ``level0_device_physics``,
+``device_3d_model`` and ``device_cad_model`` capabilities at
+``computational_prototype`` maturity: validated parameter objects,
+synthetic diagnostic and clock declarations aligned with the pinned SPO
+observability catalogue, the published closed-form ignition condition
+and implosion definitions evaluated on a declared capsule and implosion,
+the tessellated and B-rep models of the capsule and its radiation
+enclosure on the shared kernel library, documented consistency
+estimates, canonical serialisation with SHA-256 digests, and data-only
+pins to the SPO registries. No claim about any real machine or
+diagnostic is made anywhere in this package.
 """
 
 from __future__ import annotations
@@ -33,7 +35,30 @@ from scpn_icf_laser_core.configuration import (
     configuration_from_bytes,
     configuration_from_record,
 )
-from scpn_icf_laser_core.errors import DeviceConfigurationError, DiagnosticPlanError
+from scpn_icf_laser_core.errors import (
+    DeviceConfigurationError,
+    DeviceGeometryError,
+    DiagnosticPlanError,
+)
+from scpn_icf_laser_core.geometry import (
+    BODY_ABLATOR_SHELL,
+    BODY_FUEL_ICE_SHELL,
+    BODY_FUEL_VAPOUR_CORE,
+    BODY_HOHLRAUM_WALL,
+    BODY_NAMES_BY_IDENTIFIER,
+    CAD_MODEL_NON_CLAIMS,
+    CAD_MODEL_SCHEMA,
+    CAD_MODEL_SCHEMA_VERSION,
+    MODEL_NON_CLAIMS,
+    MODEL_SCHEMA,
+    MODEL_SCHEMA_VERSION,
+    DeviceModel3D,
+    DeviceModelCAD,
+    HohlraumEnvelope,
+    build_device_cad,
+    build_device_model,
+    hohlraum_from_record,
+)
 from scpn_icf_laser_core.observability import (
     APPLICABLE_CANDIDATES,
     CATALOGUE_BINDING,
@@ -88,6 +113,14 @@ __version__: Final = "0.1.0.dev0"
 
 __all__ = [
     "APPLICABLE_CANDIDATES",
+    "BODY_ABLATOR_SHELL",
+    "BODY_FUEL_ICE_SHELL",
+    "BODY_FUEL_VAPOUR_CORE",
+    "BODY_HOHLRAUM_WALL",
+    "BODY_NAMES_BY_IDENTIFIER",
+    "CAD_MODEL_NON_CLAIMS",
+    "CAD_MODEL_SCHEMA",
+    "CAD_MODEL_SCHEMA_VERSION",
     "CATALOGUE_BINDING",
     "DIRECT_DRIVE_LPI_BOUND_W_CM2",
     "DT_ADIABAT_COEFFICIENT",
@@ -97,6 +130,9 @@ __all__ = [
     "LEVEL0_NON_CLAIMS",
     "LEVEL0_SCHEMA",
     "LEVEL0_SCHEMA_VERSION",
+    "MODEL_NON_CLAIMS",
+    "MODEL_SCHEMA",
+    "MODEL_SCHEMA_VERSION",
     "OWNED_CONFIGURATIONS",
     "CandidateProfile",
     "CapsuleDeclaration",
@@ -107,10 +143,14 @@ __all__ = [
     "DeferredCandidate",
     "DeviceConfiguration",
     "DeviceConfigurationError",
+    "DeviceGeometryError",
+    "DeviceModel3D",
+    "DeviceModelCAD",
     "DiagnosticChannelPlan",
     "DiagnosticPlan",
     "DiagnosticPlanError",
     "FrameKind",
+    "HohlraumEnvelope",
     "ImplosionDeclaration",
     "LaserDriver",
     "Level0Physics",
@@ -123,6 +163,8 @@ __all__ = [
     "SemanticCarrier",
     "TargetDeclaration",
     "__version__",
+    "build_device_cad",
+    "build_device_model",
     "configuration_from_bytes",
     "configuration_from_record",
     "convergence_ratio",
@@ -131,6 +173,7 @@ __all__ = [
     "envelope_from_bytes",
     "envelope_from_record",
     "fusion_yield_mj",
+    "hohlraum_from_record",
     "hot_spot_pressure_floor_gbar",
     "hot_spot_radius_ceiling_um",
     "hydrodynamic_efficiency",

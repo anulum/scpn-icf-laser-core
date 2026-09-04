@@ -290,3 +290,119 @@ Bounded claims — what is NOT claimed:
 - No value describes, approximates or validates any real machine or
   shot; an anchor reproduces a number a filed source prints and nothing
   further.
+
+## Device 3D model
+
+Evidence record of the `device_3d_model` capability
+(`computational_prototype`; design record:
+`docs/adr/0006-device-3d-and-cad-models.md`; consumer contract:
+`docs/DEVICE_3D_MODEL_CONTRACT.md`).
+
+What is exercised, all under the 100 % statement-and-branch coverage gate:
+
+- The body set of each owned configuration, in its fixed order: three
+  concentric capsule bodies for the two directly driven identifiers, and
+  those three plus the radiation enclosure for the indirect-drive one.
+- The enclosure required for `laser_icf_indirect_drive` and refused for
+  the two directly driven identifiers, both directions refusing rather
+  than defaulting.
+- An enclosure the capsule does not fit inside refused in the direction
+  it is wrong, naming the field and both values: a case no wider than
+  the capsule, and a case no longer than the capsule's diameter.
+- A layering that leaves no cavity refused by the level-0 relation
+  itself, so this tier cannot draw a capsule the physics record would
+  have rejected.
+- The single conversion from the micrometres the configuration and the
+  capsule declaration carry to the metres the bodies are built in.
+- Canonical serialisation and SHA-256 digest identity of the model
+  record, including the digests of the configuration, the capsule
+  declaration and the enclosure it was built from.
+
+Anchors — printed values reproduced, and nothing further:
+
+- The capsule's printed outer radius, and the outer radius of each
+  layer, read off the built bodies as exact equalities. The sphere
+  profile places a vertex at exactly the centre plus the radius, and the
+  capsule is centred on the origin.
+- The printed case-to-capsule radius ratio of 4 to 1, recovered exactly
+  from the built solids: the smallest distance from the axis to any
+  vertex of the enclosure, over the ablator shell's pole.
+- The printed hohlraum area band of 15 to 25 times the initial capsule
+  area, measured at 20.5 from the bodies actually built. The capsule's
+  outer area comes out of the three recorded body areas by an identity,
+  each shell recording the sum of its two surfaces; the enclosure's
+  interior area is its inner perimeter times its built length, which is
+  the lateral wall alone and therefore a lower bound on the enclosing
+  surface the printed statement describes.
+
+Measured, rather than assumed:
+
+- The printed ablator thickness does **not** return exactly from the
+  built bodies. The layer arithmetic is exact in micrometres — 1700,
+  1663 and 1503 are integers — and the conversion to metres introduces
+  the rounding, so the recovered value is 36.99999999999992, or 2.1e-15
+  relative. The test carries a measured bound and states why. The fuel
+  thickness, on the same arithmetic, returns exactly 160.
+- Swapping the two resolutions builds a different body and no gate
+  downstream would notice, so a test asserts the difference.
+
+Boundaries:
+
+- The enclosure's anchors come from a **related public precursor** of
+  the cited indirect-drive work, filed and labelled as a substitute
+  because the cited work is behind a subscription.
+- The enclosure's wall thickness is declared; no source is claimed for
+  it.
+- Every body is an inscribed polyhedron of revolution. Comparing any
+  volume here to `4/3 pi r^3` compares two different solids.
+
+## Device CAD model
+
+Evidence record of the `device_cad_model` capability
+(`computational_prototype`; design record:
+`docs/adr/0006-device-3d-and-cad-models.md`). The tier is behind the
+optional `cad` extra; two CI jobs install it.
+
+What is exercised, all under the same coverage gate:
+
+- The same body set and the same order as tier G1, for both drive
+  classes.
+- The library's fail-closed evidence on every body: the back-end's
+  volume and area against the analytic closed forms, the faceted volume
+  against the declared chord-deficit bound, and the faceted volume
+  against the tier-G1 mesh of the same body.
+- The assembly manifest, the normalised STEP bytes and their digest, and
+  the pinned back-end versions.
+- Refusals: an unknown identifier, a manifest of the wrong schema, a
+  manifest counting the wrong number of bodies, a body set in the wrong
+  order, and an invalid deflection arriving as this package's own error
+  type.
+
+Measured, and recorded because it does not transfer from the
+metre-scale families:
+
+- **The ring count has a ceiling set by the back-end.** Up to 32 rings
+  the revolved solid's volume agrees with the analytic frustum stack to
+  7e-15 relative; at 48 rings it disagrees by 3.5e-5, at 64 by 1.5e-5
+  and at 128 by 6.5e-5, thousands of times the library's 1e-9 measure
+  tolerance and not converging. The boundary is where the shortest
+  generating segment falls below about 5e-6 m. Cylindrical bodies are
+  unaffected. Nothing was loosened: the evidence kernel refused the
+  first build, and a test asserts that refusal at 48 rings.
+- **The angular deflection does not bind at this scale.** Between 0.5
+  and 0.1 radians every body's deficit is identical to four significant
+  figures.
+- **The linear deflection buys a bound, not accuracy.** 2e-7 m is the
+  tightest bound the bodies clear — the vapour core sits at 0.57 of its
+  bound — and at 1e-7 m the vapour core exceeds its bound by fifteen per
+  cent, which a test asserts. At 1e-8 m the back-end refuses outright.
+- The deficit bound of each body uses that body's **outer** radius,
+  which is the tightest bound a body of revolution admits; a sphere's
+  circles run to zero at the poles and would make the bound unbounded.
+
+Boundaries:
+
+- Determinism of the STEP bytes is claimed within one pinned back-end
+  environment only, never across back-end versions.
+- No body is an engineering model and no fabrication tolerance is
+  carried.
