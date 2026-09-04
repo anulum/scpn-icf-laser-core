@@ -57,20 +57,31 @@ mean sitting one step from a refusal on the strength of a parity whose
 cause is unknown. A test asserts the refusal at the first count above
 the default.
 
-At that count the deflections behave as follows. The angular
-deflection does not bind: between 0.5 and 0.1 radians the volume
-deficit of every body is identical to four significant figures and only
-the facet count moves. The linear deflection does not set the deficit
-either — it sets the **bound** the deficit is measured against, while
-the ring count sets the deficit itself. At 1e-8 m the back-end refuses
-outright with ``Standard_NumericError``.
+At that count the deflections behave as follows.
 
-So the linear deflection is chosen as the tightest bound that the
-bodies actually clear, and 2e-7 m is that value: the worst body, the
-vapour core, sits at 0.56 of its bound, and the next step down, 1e-7 m,
-does not pass at all — the vapour core exceeds its bound by thirteen per
-cent. This is not the widest margin available; a margin is only as good
-as the bound it is a margin on.
+**The angular deflection does not bind**: between 0.5 and 0.1 radians
+the volume deficit of every body is identical to four significant
+figures and only the facet count moves.
+
+**The linear deflection does not change the model at all — it changes
+only what the model is checked against.** Measured across 5e-7, 2e-7,
+1.5e-7, 1.2e-7, 1.15e-7 and 1.13e-7 metres, the vapour core's faceted
+volume deficit is 1.502834e-4 at every one of them, to seven
+significant figures. What moves is the declared bound, which is
+``2 d / r``. At 1e-8 m the back-end refuses outright with
+``Standard_NumericError``.
+
+**That makes the threshold exact rather than a rung on a ladder.** The
+bound is violated when ``2 d / r`` falls below the measured deficit, so
+the smallest deflection the worst body clears is ``deficit * r / 2`` =
+**1.12938e-7 m**. Measured either side of it: 1.13e-7 m builds, at
+0.9995 of its bound, and 1.12e-7 m is refused.
+
+The declared value of 2e-7 m is above that threshold deliberately: it
+puts the vapour core at 0.56 of its bound, which is a stated margin
+against back-end drift rather than the strongest claim available. A test
+asserts that 1e-7 m — below the threshold — is refused, and another
+computes the threshold from the built model.
 
 **The radius handed to the deficit bound is the outer radius of each
 body, and that is deliberate.** The bound ``2 d / r`` is written for a

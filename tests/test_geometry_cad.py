@@ -23,6 +23,7 @@ import json
 import pytest
 
 from geometry_fixtures import (
+    ANCHOR_CAVITY_RADIUS_M,
     ANCHOR_RINGS,
     anchor_capsule,
     anchor_configuration,
@@ -55,9 +56,16 @@ from scpn_icf_laser_core.geometry import (
 #: alternate by parity up to sixty-one — so this constant is the first
 #: refusal and not an upper bound on what builds.
 RINGS_ABOVE_THE_CEILING = 40
-#: Linear deflection measured not to pass: one step below the default,
-#: the vapour core exceeds its declared bound.
-DEFLECTION_BELOW_WHAT_PASSES_M = 1.0e-7
+#: Linear deflection measured not to pass: below the exact threshold,
+#: the vapour core's deficit exceeds the bound the deflection declares.
+DEFLECTION_BELOW_THE_THRESHOLD_M = 1.0e-7
+#: A second deflection that passes, used to show that the deficit does
+#: not depend on the deflection at all.
+DEFLECTION_ABOVE_THE_DEFAULT_M = 5.0e-7
+#: The exact deflection below which the worst body violates its bound,
+#: measured: the deficit times the cavity radius over two. 1.13e-7 m
+#: builds at 0.9995 of its bound and 1.12e-7 m is refused.
+DEFLECTION_THRESHOLD_M = 1.129380e-7
 #: The strongest guarantee any declared bound makes here. Measured: the
 #: widest is the vapour core's at 0.0266 %.
 BOUND_CEILING = 1.0e-3
@@ -163,12 +171,72 @@ def test_the_ring_count_the_back_end_cannot_hold_is_refused() -> None:
         )
 
 
-def test_the_next_tighter_deflection_does_not_pass() -> None:
-    """The declared deflection is the tightest bound the bodies clear.
+@functools.cache
+def loose_cad() -> DeviceModelCAD:
+    """Build and cache the directly driven model at a looser deflection.
 
-    One step below it the vapour core's deficit exceeds its own bound by
-    about thirteen per cent. Recording that here is what makes the choice
-    of deflection falsifiable rather than a preference.
+    Returns
+    -------
+    DeviceModelCAD
+        The same bodies, checked against a weaker declared bound.
+    """
+    return build_device_cad(
+        anchor_configuration(),
+        anchor_capsule(),
+        None,
+        DEFAULT_REFERENCE_MESH_SEGMENTS,
+        DEFAULT_SPHERE_RINGS,
+        DEFLECTION_ABOVE_THE_DEFAULT_M,
+    )
+
+
+def test_the_deficit_does_not_depend_on_the_linear_deflection() -> None:
+    """The deflection moves the bound and leaves the model alone.
+
+    This is the measurement the whole choice of deflection rests on. At
+    2e-7 m and at 5e-7 m every body's faceted volume deficit is the same
+    number, while the bound each is measured against differs by the
+    ratio of the two deflections. So the deflection is not an accuracy
+    knob at this scale — it is the strength of the claim being made.
+    """
+    tight = {body.name: body for body in direct_cad().bodies}
+    loose = {body.name: body for body in loose_cad().bodies}
+    for name, body in tight.items():
+        assert body.faceted_volume_relative_deficit == pytest.approx(
+            loose[name].faceted_volume_relative_deficit, rel=1e-6
+        )
+        assert loose[name].faceted_volume_deficit_bound == pytest.approx(
+            body.faceted_volume_deficit_bound
+            * (DEFLECTION_ABOVE_THE_DEFAULT_M / DEFAULT_LINEAR_DEFLECTION_M)
+        )
+
+
+def test_the_exact_deflection_threshold_lies_between_the_two_tested_values() -> None:
+    """The threshold is computable, and the default sits above it.
+
+    Because the deficit is independent of the deflection and the bound
+    is ``2 d / r``, the smallest deflection the worst body clears is
+    exactly ``deficit * r / 2``. Measured, that is 1.12938e-7 m for the
+    vapour core — above the 1e-7 m the next test asserts is refused, and
+    below the declared 2e-7 m.
+
+    The declared value is therefore a stated margin and **not** the
+    tightest bound the bodies clear, which is what this record said
+    before the threshold was computed rather than sampled from a ladder.
+    """
+    vapour = next(
+        body for body in direct_cad().bodies if body.name == BODY_FUEL_VAPOUR_CORE
+    )
+    threshold = vapour.faceted_volume_relative_deficit * ANCHOR_CAVITY_RADIUS_M / 2.0
+    assert DEFLECTION_BELOW_THE_THRESHOLD_M < threshold < DEFAULT_LINEAR_DEFLECTION_M
+    assert threshold == pytest.approx(DEFLECTION_THRESHOLD_M, rel=1e-5)
+
+
+def test_a_deflection_below_the_threshold_does_not_pass() -> None:
+    """Below the computed threshold the declared bound is violated.
+
+    Measured: the vapour core's deficit of 1.5028e-4 against a bound of
+    1.3307e-4, over by thirteen per cent.
     """
     with pytest.raises(DeviceGeometryError, match="faceted_volume_relative_deficit"):
         build_device_cad(
@@ -177,7 +245,7 @@ def test_the_next_tighter_deflection_does_not_pass() -> None:
             None,
             DEFAULT_REFERENCE_MESH_SEGMENTS,
             DEFAULT_SPHERE_RINGS,
-            DEFLECTION_BELOW_WHAT_PASSES_M,
+            DEFLECTION_BELOW_THE_THRESHOLD_M,
         )
 
 

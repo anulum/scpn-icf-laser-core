@@ -149,16 +149,25 @@ locating nothing.
 **The angular deflection does not bind.** Between 0.5 and 0.1 radians
 every body's deficit is identical to four significant figures.
 
-**The linear deflection buys a bound, not accuracy.** The deficit is set
-by the ring count; the deflection sets what the deficit is measured
-against. At 1e-8 m the back-end refuses outright with a numeric error.
+**The linear deflection does not change the model at all.** Measured
+across 5e-7, 2e-7, 1.5e-7, 1.2e-7, 1.15e-7 and 1.13e-7 metres, the
+vapour core's faceted volume deficit is 1.502834e-4 at every one of
+them, to seven significant figures. Only the declared bound `2 d / r`
+moves. At 1e-8 m the back-end refuses outright with a numeric error.
 
-The choice is 2e-7 m, which is the tightest bound the bodies actually
-clear: the worst of them, the vapour core, sits at 0.56 of its bound,
-and one step down at 1e-7 m it exceeds its bound by thirteen per cent. A
-test asserts that failure too. This is not the widest available margin,
-and it is not meant to be: a margin is only as good as the bound it is a
-margin on.
+**So the threshold is exact rather than a rung on a ladder.** The bound
+is violated when `2 d / r` falls below the deficit, so the smallest
+deflection the worst body clears is `deficit · r / 2` = **1.12938e-7 m**.
+Measured either side: 1.13e-7 m builds at 0.9995 of its bound, and
+1.12e-7 m is refused.
+
+The choice of 2e-7 m sits above that threshold deliberately, leaving the
+vapour core at 0.56 of its bound — a stated margin against back-end
+drift, and **not** the tightest bound the bodies clear, which is what
+this record claimed while it was sampling a four-value ladder instead of
+computing the threshold. Two tests carry it now: one builds at two
+deflections and asserts the deficits are equal while the bounds differ
+by their ratio, and one computes the threshold from the built model.
 
 **The radius handed to the deficit bound is each body's outer radius.**
 A sphere's circles run from zero at the poles to the outer radius at the
@@ -185,6 +194,15 @@ back-end supports, and the consumer contract told a reader that 32 was a
 hard ceiling. The measurement above replaces both, and the test now
 asserts the step immediately above the default so the same gap cannot
 reopen.
+
+**A third statement in this section was corrected the same afternoon.**
+It said 2e-7 m was "the tightest bound the bodies actually clear". That
+is true only against the ladder of four values it tested; 1.2e-7 m
+clears as well, and the exact threshold is 1.12938e-7 m. The section
+above now computes the threshold instead of sampling for it. Three
+rounds of correction on one section, all of the same kind: a shape
+inferred from a few points and written in the register of a
+measurement.
 
 **The correction was itself refined an hour later, and that is recorded
 too.** Its first form said 39 was "the largest count the bodies are

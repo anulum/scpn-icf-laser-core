@@ -118,8 +118,12 @@ one.
   of the body's radius — measured, the first refusal is at 34 rings for
   1.0 mm and 58 for 5.0 mm — so it transfers to no other family. A
   consumer building at a different radius must measure its own.
-- **2e-7 m is the tightest linear deflection the bodies clear.** One
-  step tighter, the vapour core exceeds its declared bound.
+- **The linear deflection does not change the model, only the claim.**
+  The faceted volume deficit is identical across every deflection
+  measured; what moves is the bound `2 d / r`. The exact threshold below
+  which the worst body violates its bound is `deficit · r / 2` =
+  1.12938e-7 m. The declared 2e-7 m carries a stated margin over it,
+  leaving the vapour core at 0.56 of its bound.
 - The faceting deficit bound of each body is `2 d / r` at that body's
   **outer** radius, which is the tightest bound a body of revolution
   admits.

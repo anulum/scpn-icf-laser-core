@@ -410,11 +410,21 @@ metre-scale families:
 - **The angular deflection does not bind at this scale.** Between 0.5
   and 0.1 radians every body's deficit is identical to four significant
   figures.
-- **The linear deflection buys a bound, not accuracy.** 2e-7 m is the
-  tightest bound the bodies clear — the vapour core sits at 0.56 of its
-  bound — and at 1e-7 m the vapour core exceeds its bound by thirteen
-  per cent, which a test asserts. At 1e-8 m the back-end refuses
-  outright.
+- **The linear deflection does not change the model at all.** Across
+  5e-7, 2e-7, 1.5e-7, 1.2e-7, 1.15e-7 and 1.13e-7 metres the vapour
+  core's faceted volume deficit is 1.502834e-4 at every one of them;
+  only the declared bound `2 d / r` moves. A test asserts this directly
+  by building at two deflections and comparing both the deficits and the
+  ratio of the bounds. At 1e-8 m the back-end refuses outright.
+- **The threshold is therefore exact, not a rung on a ladder.** The
+  smallest deflection the worst body clears is `deficit * r / 2` =
+  1.12938e-7 m, computed from the built model by a test that asserts it
+  lies between the refused 1e-7 m and the declared 2e-7 m. Measured
+  either side: 1.13e-7 m builds at 0.9995 of its bound, 1.12e-7 m is
+  refused. The declared 2e-7 m leaves the vapour core at 0.56 of its
+  bound, which is a stated margin against back-end drift and **not** the
+  tightest bound the bodies clear — the claim this record made while it
+  was sampling a ladder.
 - The deficit bound of each body uses that body's **outer** radius,
   which is the tightest bound a body of revolution admits; a sphere's
   circles run to zero at the poles and would make the bound unbounded.

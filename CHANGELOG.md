@@ -38,6 +38,14 @@ SCPN ICF Laser Core — CHANGELOG
 - Measured percentages corrected where the ring count moved them: the
   vapour core sits at 0.56 of its deficit bound, and exceeds it by 13 %
   at the next tighter linear deflection.
+- Withdrawn: the statement that 2e-7 m is the tightest linear deflection
+  the bodies clear. It held only against the four-value ladder that was
+  tested; 1.2e-7 m clears as well. The faceted volume deficit is now
+  measured to be independent of the deflection — 1.502834e-4 across six
+  values — so the threshold is exact at `deficit * r / 2` = 1.12938e-7 m,
+  with 1.13e-7 m building and 1.12e-7 m refused. The declared 2e-7 m is
+  restated as a margin over that threshold. Two new tests assert the
+  independence and compute the threshold from the built model.
 
 ### Added
 
