@@ -14,18 +14,27 @@ SCPN ICF Laser Core — CHANGELOG
 
 ### Fixed
 
-- Tier-G2 ring count raised from 32 to the measured back-end ceiling of
-  39 for this family's bodies, with the tier-G1 anchor following it so
-  both tiers share one resolution. The refusal test now asserts 40
-  rings, the step immediately above the ceiling, instead of 48.
+- Tier-G2 ring count raised from 32 to 39, the top of the regime where
+  every count is exact on this family's bodies, with the tier-G1 anchor
+  following it so both tiers share one resolution. The refusal test now
+  asserts 40 rings, the back-end's first refusal and the step
+  immediately above the default, instead of 48.
 - Withdrawn from ADR 0006, `docs/DEVICE_3D_MODEL_CONTRACT.md` and
   `VALIDATION.md`: the statement that 32 rings is the ceiling, and the
   statement that the boundary sits where the shortest generating segment
-  falls below about 5e-6 m. Neither was measured. The boundary is a
-  function of the body's radius — measured at 33 rings for 1.0 mm and 57
-  for 5.0 mm — and no single length is constant across it, the shortest
-  generating segment there running from 9.2e-5 m to 2.7e-4 m. ADR 0006
-  carries a dated correction subsection recording what was withdrawn.
+  falls below about 5e-6 m. Neither was measured. No single length is
+  constant where the refusals begin — the shortest generating segment
+  there runs from 9.2e-5 m to 2.7e-4 m across radii — and where they
+  begin is a function of the body's radius, the first refusal falling at
+  34 rings for 1.0 mm and 58 for 5.0 mm.
+- The ring-count behaviour restated from a scan of every count from 30
+  to 75 rather than from its endpoints: counts to 39 are all exact, 40
+  to 61 alternate with every even count refusing and every odd count
+  exact, and 62 and above all refuse. An even count places exactly one
+  profile sample on the equator and an odd count places none, which the
+  record states as a measured correlation and not as a cause. The
+  default stays at the top of the first regime. ADR 0006 carries a dated
+  correction subsection recording both rounds of what was withdrawn.
 - Measured percentages corrected where the ring count moved them: the
   vapour core sits at 0.56 of its deficit bound, and exceeds it by 13 %
   at the next tighter linear deflection.

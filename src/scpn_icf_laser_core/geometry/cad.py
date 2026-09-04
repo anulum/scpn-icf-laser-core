@@ -16,36 +16,48 @@ its tier-G1 twin, and exported as normalised STEP bytes with a digest.
 
 **This is the first family in the group whose bodies are millimetres
 across, and everything below was measured here rather than taken from a
-sibling. The scale does not merely shift the numbers; it puts a ceiling
+sibling. The scale does not merely shift the numbers; it puts a bound
 on the ring count that no metre-scale family meets.**
 
-The ring count is bounded from above by the back-end. Up to and
-including thirty-nine rings the revolved solid's own volume agrees with
-the analytic frustum stack to 7e-15 relative. At forty it does not: the
-fuel shell reports 1.7e-4, and above that the departure neither
-disappears nor converges — 3.5e-5 at forty-eight, 1.5e-5 at sixty-four,
-6.5e-5 at a hundred and twenty-eight, all thousands of times the
-library's 1e-9 measure tolerance. The cylindrical bodies are unaffected
-at every count.
+The ring count is bounded from above by the back-end, and the shape of
+that bound is not a simple ceiling. Scanning every count from thirty to
+seventy-five on this family's own bodies gives three regimes:
 
-**Where that boundary sits was measured across radii, and it moves.**
-For a solid sphere the last exact ring count is 33 at a radius of
-1.0 mm, 39 at 1.503 mm, 41 at 1.8 mm, 45 at 2.34 mm, 49 at 3.0 mm and
-57 at 5.0 mm; at 10 mm and above nothing fails up to a hundred and
-twenty rings, which is why no metre-scale family in this group meets
-the ceiling at all. **No single length is constant at that boundary**:
-the shortest generating segment there runs from 9.2e-5 m to 2.7e-4 m
-over the same radii, so it is not the quantity that sets it. The
-mechanism belongs to the back-end and is not derived here; what is
-recorded is the measurement and its consequence, which is that **each
-family must measure its own ceiling and may not inherit a sibling's.**
+- **thirty to thirty-nine** — every count exact, agreeing with the
+  analytic frustum stack to 7e-15 relative;
+- **forty to sixty-one** — a mixed band. Even counts refuse: forty
+  reports 1.7e-4 on the fuel shell, against a 1e-9 tolerance. Odd
+  counts stay exact, all of forty-one, forty-three and so on to
+  sixty-one;
+- **sixty-two and above** — every count refuses.
+
+The cylindrical bodies are unaffected throughout.
+
+**The parity is not a coincidence, and it is as far as measurement
+goes.** An even ring count places exactly one profile sample on the
+equator, at exactly ``(0, R)``; an odd count places none. The refusals
+in the mixed band fall exactly on the even counts. That correlation is
+measured. Whether the equatorial sample is what the revolve fails on is
+**not** established here — the mechanism belongs to the back-end.
+
+**Where the band starts moves with the body's radius.** The first
+refusal is at 34 rings for a solid sphere of 1.0 mm, 40 at 1.503 mm, 42
+at 1.8 mm, 46 at 2.34 mm, 50 at 3.0 mm and 58 at 5.0 mm; at 10 mm and
+above nothing fails up to a hundred and twenty rings, which is why no
+metre-scale family in this group meets the bound at all. **No single
+length is constant where the band starts**: the shortest generating
+segment there runs from 9.2e-5 m to 2.7e-4 m over those radii. So each
+family must measure its own and may not inherit a sibling's.
 
 Nothing was loosened to accommodate that. The evidence kernel refuses,
-naming the body and the bound, which is what it is for; the ring count
-is the largest the bodies of this family are exact at, and a test
-asserts the refusal one step above it.
+naming the body and the bound, which is what it is for. **The default
+is the top of the first regime, not the highest count that happens to
+pass.** Odd counts up to sixty-one do pass, and building there would
+mean sitting one step from a refusal on the strength of a parity whose
+cause is unknown. A test asserts the refusal at the first count above
+the default.
 
-At that ceiling the deflections behave as follows. The angular
+At that count the deflections behave as follows. The angular
 deflection does not bind: between 0.5 and 0.1 radians the volume
 deficit of every body is identical to four significant figures and only
 the facet count moves. The linear deflection does not set the deficit
@@ -148,11 +160,13 @@ CAD_MODEL_NON_CLAIMS: Final = (
 
 #: Reference tessellation the B-rep bodies are checked against.
 DEFAULT_REFERENCE_MESH_SEGMENTS: Final = 8
-#: Polar steps of the spherical profiles, at the measured ceiling of
-#: this family's own bodies: the back-end revolves an exact solid up to
-#: thirty-nine rings here and not beyond. The ceiling is a function of
-#: the body's radius and was measured across radii rather than inherited,
-#: so a sibling family's count says nothing about this one's.
+#: Polar steps of the spherical profiles: the largest count below the
+#: back-end's first refusal on this family's own bodies, which is the
+#: top of the regime where every count is exact. Higher odd counts pass
+#: and are still not used; see the module docstring. Where the refusals
+#: begin is a function of the body's radius and was measured here rather
+#: than inherited, so a sibling family's count says nothing about this
+#: one's.
 DEFAULT_SPHERE_RINGS: Final = 39
 #: Mesher deflections, both set by measurement on this family's own
 #: millimetre scale rather than copied from a metre-scale sibling.

@@ -381,23 +381,32 @@ What is exercised, all under the same coverage gate:
 Measured, and recorded because it does not transfer from the
 metre-scale families:
 
-- **The ring count has a ceiling set by the back-end.** Up to 39 rings
-  the revolved solid's volume agrees with the analytic frustum stack to
-  7e-15 relative; at 40 the fuel shell disagrees by 1.7e-4, and above
-  that the departure neither disappears nor converges — 3.5e-5 at 48
-  rings, 1.5e-5 at 64 and 6.5e-5 at 128, thousands of times the
-  library's 1e-9 measure tolerance. Cylindrical bodies are unaffected.
-  Nothing was loosened: the evidence kernel refuses, and a test asserts
-  that refusal at 40 rings, the step immediately above the ceiling.
-- **The ceiling moves with the body's radius, and was measured across
-  radii rather than inherited.** On solid spheres the last exact ring
-  count is 33 at 1.0 mm, 39 at 1.503 mm, 41 at 1.8 mm, 45 at 2.34 mm,
-  49 at 3.0 mm and 57 at 5.0 mm; at 10 mm and above nothing fails up to
-  120 rings, which is why no metre-scale family meets the ceiling at
-  all. No single length is constant at the boundary — the shortest
-  generating segment there runs from 9.2e-5 m to 2.7e-4 m over those
-  radii — so the mechanism is the back-end's and is not derived here.
-  Every family measures its own ceiling.
+- **The ring count is bounded by the back-end, and the bound is not a
+  simple ceiling.** Scanning every count from 30 to 75 on this family's
+  bodies gives three regimes: 30 to 39, every count exact to 7e-15
+  relative; 40 to 61, mixed, with every even count refusing and every
+  odd count exact; 62 and above, every count refusing. The first
+  refusal is at 40 rings, where the fuel shell departs by 1.7e-4
+  against a 1e-9 tolerance. Cylindrical bodies are unaffected
+  throughout. Nothing was loosened: the evidence kernel refuses, and a
+  test asserts that refusal at 40, the step immediately above the
+  default.
+- **The parity is measured; its cause is not claimed.** An even ring
+  count places exactly one profile sample on the equator, at exactly
+  `(0, R)`, and an odd count places none; the refusals in the mixed
+  band fall exactly on the even counts. Whether that is what the revolve
+  fails on is not established here.
+- **The default is the top of the first regime, not the highest count
+  that passes.** Odd counts to 61 pass and are not used: building there
+  would sit one step from a refusal on a parity whose cause is unknown.
+- **Where the band starts moves with the body's radius, and was measured
+  across radii rather than inherited.** On solid spheres the first
+  refusal is at 34 rings for 1.0 mm, 40 at 1.503 mm, 42 at 1.8 mm, 46 at
+  2.34 mm, 50 at 3.0 mm and 58 at 5.0 mm; at 10 mm and above nothing
+  fails up to 120 rings, which is why no metre-scale family meets the
+  bound at all. No single length is constant where the band starts — the
+  shortest generating segment there runs from 9.2e-5 m to 2.7e-4 m — so
+  every family measures its own.
 - **The angular deflection does not bind at this scale.** Between 0.5
   and 0.1 radians every body's deficit is identical to four significant
   figures.

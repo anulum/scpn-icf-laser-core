@@ -94,43 +94,57 @@ The wall thickness is declared and no source is claimed for it.
 
 ## What the millimetre scale changed, measured
 
-**The ring count has a ceiling, and it is the back-end's.** Up to and
-including 39 rings the revolved solid's volume agrees with the analytic
-frustum stack to 7e-15 relative. At 40 the fuel shell disagrees by
-1.7e-4, and above that the departure neither disappears nor converges:
-3.5e-5 at 48 rings, 1.5e-5 at 64 and 6.5e-5 at 128, all thousands of
-times the library's 1e-9 measure tolerance. The cylindrical bodies are
-unaffected at every count.
+**The ring count is bounded by the back-end, and the bound is not a
+simple ceiling.** Scanning every count from 30 to 75 on this family's
+own bodies gives three regimes:
 
-**The boundary moves with the body's radius**, measured on solid
-spheres:
+| ring counts | behaviour |
+|---|---|
+| 30 to 39 | every count exact, to 7e-15 relative |
+| 40 to 61 | mixed: every even count refuses, every odd count is exact |
+| 62 and above | every count refuses |
 
-| radius | last exact ring count | first failing |
-|---|---|---|
-| 1.000 mm | 33 | 34 |
-| 1.503 mm (this family's cavity) | 39 | 40 |
-| 1.800 mm | 41 | 42 |
-| 2.340 mm | 45 | 46 |
-| 3.000 mm | 49 | 50 |
-| 5.000 mm | 57 | 58 |
-| 10 mm and above | none up to 120 | — |
+The first refusal is at 40 rings, where the fuel shell and the vapour
+core both depart — the shell by 1.7e-4 against a 1e-9 tolerance. The
+cylindrical bodies are unaffected throughout.
 
-That last row is why no metre-scale family in this group meets the
-ceiling at all, and the rows above it are why **each family must measure
-its own and may not inherit a sibling's.**
+**The parity is measured; its cause is not claimed.** An even ring count
+places exactly one profile sample on the equator, at exactly `(0, R)`,
+and an odd count places none. The refusals inside the mixed band fall
+exactly on the even counts. That correlation is measured. Whether the
+equatorial sample is what the revolve fails on is **not** established
+here; the mechanism belongs to the back-end.
 
-**No single length is constant at the boundary.** The shortest
+**Where the band starts moves with the body's radius**, measured on
+solid spheres:
+
+| radius | first refusal |
+|---|---|
+| 1.000 mm | 34 |
+| 1.503 mm (this family's cavity) | 40 |
+| 1.800 mm | 42 |
+| 2.340 mm | 46 |
+| 3.000 mm | 50 |
+| 5.000 mm | 58 |
+| 10 mm and above | none up to 120 |
+
+That last row is why no metre-scale family in this group meets the bound
+at all, and the rows above it are why **each family must measure its own
+and may not inherit a sibling's.**
+
+**No single length is constant where the band starts.** The shortest
 generating segment there runs from 9.2e-5 m at 1.0 mm to 2.7e-4 m at
 5.0 mm, a factor of three over the same radii, so it is not the quantity
-that sets the boundary. The mechanism is the back-end's and is not
-derived here; what this record carries is the measurement and its
-consequence.
+that sets it.
 
-Nothing was loosened. The evidence kernel refuses, naming the body and
-the bound; the ring count is the largest this family's bodies are exact
-at. A test asserts the refusal at 40 rings — the step immediately above
-the ceiling, because a number far above it passes the same test while
-leaving the ceiling itself unlocated.
+**The default is the top of the first regime, not the highest count that
+passes.** Odd counts to 61 do pass. Building there would mean sitting
+one step from a refusal on the strength of a parity whose cause is
+unknown, and buying a finer profile with a margin of zero. Nothing was
+loosened: the evidence kernel refuses, naming the body and the bound,
+and a test asserts the refusal at 40 — the step immediately above the
+default, because a number far above it passes the same test while
+locating nothing.
 
 **The angular deflection does not bind.** Between 0.5 and 0.1 radians
 every body's deficit is identical to four significant figures.
@@ -169,8 +183,21 @@ The consequence was a real one and not merely a wording defect: the
 family shipped at 32 rings, seven steps below the resolution its own
 back-end supports, and the consumer contract told a reader that 32 was a
 hard ceiling. The measurement above replaces both, and the test now
-asserts the step immediately above the ceiling so the same gap cannot
-reopen. Incident record:
+asserts the step immediately above the default so the same gap cannot
+reopen.
+
+**The correction was itself refined an hour later, and that is recorded
+too.** Its first form said 39 was "the largest count the bodies are
+exact at". It is not: 41, 43 and every other odd count to 61 are exact
+as well. Scanning the whole range instead of the endpoints turned up the
+parity structure and the third regime above 61, which is what the
+section above now states. The number 39 did not move — it is the top of
+the first regime either way — but the reason for it did, from "the
+back-end cannot go higher" to "higher is erratic and its margin is
+zero". Two rounds of correction on one finding is the cost of having
+reported an endpoint sweep as a boundary in the first place.
+
+Incident record:
 `.coordination/incidents/INCIDENT_2026-09-04T1315_ring_ceiling_reported_without_measuring_the_boundary.md`.
 
 ## Consequences

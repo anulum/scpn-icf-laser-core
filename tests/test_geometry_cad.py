@@ -46,13 +46,14 @@ from scpn_icf_laser_core.geometry import (
     build_device_cad,
 )
 
-#: Ring count measured to break the back-end's own volume measure on
-#: this family's bodies. One step above the default: thirty-nine is
-#: exact, forty is not. Asserting the step immediately above the ceiling
-#: is what makes the ceiling a measurement rather than a memory; a
-#: number far above it would pass this test while leaving the ceiling
-#: itself unlocated, which is how the superseded count of thirty-two
-#: survived unchallenged.
+#: The back-end's first refusal on this family's bodies, one step above
+#: the default: thirty-nine is exact, forty is not. Asserting the step
+#: immediately above the default is what locates it; a number far above
+#: would pass this test while locating nothing, which is how the
+#: superseded count of thirty-two survived unchallenged. Note that
+#: forty-one is exact again — above the first refusal the counts
+#: alternate by parity up to sixty-one — so this constant is the first
+#: refusal and not an upper bound on what builds.
 RINGS_ABOVE_THE_CEILING = 40
 #: Linear deflection measured not to pass: one step below the default,
 #: the vapour core exceeds its declared bound.
@@ -137,14 +138,20 @@ def test_every_faceted_body_agrees_with_its_tier_one_twin() -> None:
 
 
 def test_the_ring_count_the_back_end_cannot_hold_is_refused() -> None:
-    """Above the measured ceiling the solid is wrong and the build refuses.
+    """At the first refusal the solid is wrong and the build refuses.
 
-    On this family's bodies the revolve is exact to 7e-15 up to
-    thirty-nine rings and the fuel shell departs by 1.7e-4 at forty,
-    which is five orders of magnitude above the library's measure
-    tolerance. Nothing here was loosened to admit it: the evidence
-    kernel refuses, naming the body and the bound, and this test is the
-    record that the refusal is real rather than theoretical.
+    On this family's bodies every count to thirty-nine is exact to
+    7e-15, and at forty the fuel shell departs by 1.7e-4 — five orders
+    of magnitude above the library's measure tolerance. Nothing here was
+    loosened to admit it: the evidence kernel refuses, naming the body
+    and the bound, and this test is the record that the refusal is real
+    rather than theoretical.
+
+    Forty is asserted rather than some larger count because only the
+    step immediately above the default locates it. Above forty the
+    counts alternate — odd exact, even refusing, to sixty-one — so a
+    larger number would refuse for a reason this test could not
+    distinguish from the one it means to record.
     """
     with pytest.raises(DeviceGeometryError, match="volume_relative_error"):
         build_device_cad(

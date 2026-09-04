@@ -107,14 +107,17 @@ one.
 
 ## Declared limits
 
-- **39 rings is this family's measured ceiling, not a preference.** One
-  step above it the back-end's own volume measure departs from the
+- **39 rings is the top of this family's exact regime, not a
+  preference.** At 40 the back-end's own volume measure departs from the
   analytic form by five orders of magnitude beyond the library's
-  tolerance, and the evidence kernel refuses. The ceiling is a function
-  of the body's radius — measured, it is 33 rings at 1.0 mm and 57 at
-  5.0 mm — so it is a fact about these bodies and transfers to no other
-  family. A consumer building at a different radius must measure its
-  own.
+  tolerance and the evidence kernel refuses. Above 40 the behaviour is
+  mixed rather than uniformly wrong: every even count refuses and every
+  odd count is exact, up to 61, above which every count refuses. Odd
+  counts in that band are not used, because their margin is zero and the
+  parity's cause is not established. Where the band starts is a function
+  of the body's radius — measured, the first refusal is at 34 rings for
+  1.0 mm and 58 for 5.0 mm — so it transfers to no other family. A
+  consumer building at a different radius must measure its own.
 - **2e-7 m is the tightest linear deflection the bodies clear.** One
   step tighter, the vapour core exceeds its declared bound.
 - The faceting deficit bound of each body is `2 d / r` at that body's
