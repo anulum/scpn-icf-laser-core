@@ -206,3 +206,87 @@ gate:
   domain (`clk_facility` root, `clk_shot` member); multi-domain rules
   are exercised by test-constructed plans. Scopes are declarations;
   `mapping_state` stays `unmapped`.
+
+## Level-0 device physics
+
+Evidence record of the `level0_device_physics` capability
+(`computational_prototype`; design record:
+`docs/adr/0005-level0-device-physics.md`).
+
+What is exercised, all under the 100 % statement-and-branch coverage gate:
+
+- The hot-spot ignition condition in the four equivalent forms a filed
+  review prints: the floors on hot-spot areal density and ion
+  temperature; the pressure floor that falls with hot-spot radius; the
+  pressure floor in terms of the shell kinetic energy coupled into the
+  hot spot; and the energy relation `f_k E_k = 2 pi P_hs R_hs^3` that
+  carries one into the other.
+- The definitions a one-dimensional design is quoted by — the DT shell
+  adiabat, the in-flight aspect ratio with the evaluation point the
+  review fixes, the convergence ratio, and the hydrodynamic efficiency
+  against absorbed rather than incident energy.
+- The fuel inventory of a declared capsule layering, the yield at a
+  declared burnup fraction, and the target gain against incident energy.
+- A composed record that builds the capsule's initial inner radius from
+  the configuration's outer radius and the declared thicknesses, and
+  refuses a layering that does not fit inside it.
+- Every declared quantity validated where it is declared as well as
+  inside the relation that consumes it, so a record can never be built
+  from a set the relations would have refused one at a time.
+- Canonical serialisation (sorted keys, NaN/infinity rejected) and
+  SHA-256 digest identity of the record.
+
+Anchors — printed values reproduced, and nothing further:
+
+- The 40-micrometre coefficient of the radius ceiling, recovered exactly
+  — as the same IEEE double — from the two printed pressure
+  coefficients and the printed reference radius.
+- Each of the two pressure relations reproducing its own coefficient at
+  its own reference point.
+- The design's initial inner radius and its aspect-ratio evaluation
+  point, both exact from three printed lengths, the second despite two
+  thirds not being exact in binary.
+- The absorbed energy of the design, 95 % of 1.5 MJ, exact at 1425 kJ.
+- The printed hydrodynamic efficiency and absorbed fraction reproducing
+  the printed shell kinetic energy to the one significant figure it is
+  stated with.
+
+Measured, rather than assumed:
+
+- The three printed ignition coefficients close on the energy relation
+  0.53 % high, by the same relative amount at every energy from 1 kJ to
+  1 MJ. That is the rounding of the printed coefficients; the test
+  asserts the measured offset, not an equality.
+- The pressure coefficient computed from the review's own ignition
+  floors is 115 Gbar where it prints 100 Gbar. The implementation
+  carries the printed value; a test carries the arithmetic.
+
+Not reproduced — recorded as tests so they stay visible:
+
+- The review's worked example of its own energy-form pressure floor
+  states "120 to 180 Gbar"; the equation at the stated inputs gives 112
+  to 125 Gbar. The upper figure is not produced by any coupled fraction
+  in the stated range.
+- The review's one-dimensional gain of 48 is not recovered from its
+  printed geometry at its printed burnup fraction with solid fuel at
+  standard density; that reconstruction gives about 57. The gap is
+  physical, not arithmetic: a quoted burnup fraction applies to the fuel
+  that assembles and burns. **Neither figure is used as an anchor**, and
+  nothing was adjusted to make them meet.
+
+Bounded claims — what is NOT claimed:
+
+- No radiation hydrodynamics, transport, laser-plasma-interaction or
+  burn calculation is performed anywhere in this package.
+- The capsule layering, the in-flight shell state and the burnup
+  fraction are declared inputs.
+- The ignition floors are necessary algebraic conditions on a design,
+  never a prediction that a design ignites.
+- The convergence ratio's definition carries a condition on how its
+  input is computed — alpha-particle deposition switched off — that no
+  code here can enforce.
+- The solid-fuel density used in the fuel-inventory tests is a standard
+  value the filed review does not print, and the fixtures say so.
+- No value describes, approximates or validates any real machine or
+  shot; an anchor reproduces a number a filed source prints and nothing
+  further.

@@ -24,14 +24,19 @@ laser-ICF configurations of the SCPN Phase Orchestrator reactor registry:
 `laser_icf_fast_or_shock_ignition` (staged laser-driven target).
 
 **Evidence maturity: `computational_prototype`** (per-capability; ADR 0002).
-Two capabilities are implemented: the device configuration model —
+Three capabilities are implemented: the device configuration model —
 validated parameter objects with documented consistency estimates,
 canonical serialisation, and a data-only SPO registry pin
-(evidence: `VALIDATION.md#device-configuration-model`) — and the
+(evidence: `VALIDATION.md#device-configuration-model`); the
 diagnostic and clock semantics model — synthetic channel and clock
 declarations aligned fail-closed with the pinned SPO observability
 catalogue (ADR 0003, evidence:
-`VALIDATION.md#diagnostic-and-clock-semantics`). No parameter set or
+`VALIDATION.md#diagnostic-and-clock-semantics`); and level-0 device
+physics — the published hot-spot ignition condition, the definitions an
+imploding shell is quoted by, and the fuel inventory, yield and gain
+that follow from a declared capsule, anchored on values a filed review
+prints (ADR 0005, evidence:
+`VALIDATION.md#level-0-device-physics`). No parameter set or
 channel describes any real machine or diagnostic; the claim inventory
 is empty and verified by the domain validator.
 

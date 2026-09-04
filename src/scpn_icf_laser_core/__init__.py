@@ -8,11 +8,13 @@
 
 """Device capability models of the SCPN laser-ICF device family.
 
-Public surface of the ``device_configuration_model`` and
-``diagnostic_clock_semantics`` capabilities at
-``computational_prototype`` maturity: validated parameter objects,
-synthetic diagnostic and clock declarations aligned with the pinned SPO
-observability catalogue, documented consistency estimates, canonical
+Public surface of the ``device_configuration_model``,
+``diagnostic_clock_semantics`` and ``level0_device_physics``
+capabilities at ``computational_prototype`` maturity: validated
+parameter objects, synthetic diagnostic and clock declarations aligned
+with the pinned SPO observability catalogue, the published closed-form
+ignition condition and implosion definitions evaluated on a declared
+capsule and implosion, documented consistency estimates, canonical
 serialisation with SHA-256 digests, and data-only pins to the SPO
 registries. No claim about any real machine or diagnostic is made
 anywhere in this package.
@@ -51,6 +53,29 @@ from scpn_icf_laser_core.observability import (
     plan_from_record,
 )
 from scpn_icf_laser_core.parameters import LaserDriver, TargetDeclaration
+from scpn_icf_laser_core.physics import (
+    DT_ADIABAT_COEFFICIENT,
+    DT_FUSION_ENERGY_MEV,
+    IGNITION_AREAL_DENSITY_G_CM2,
+    IGNITION_ION_TEMPERATURE_KEV,
+    LEVEL0_NON_CLAIMS,
+    LEVEL0_SCHEMA,
+    LEVEL0_SCHEMA_VERSION,
+    CapsuleDeclaration,
+    ImplosionDeclaration,
+    Level0Physics,
+    OperatingPoint,
+    convergence_ratio,
+    dt_adiabat,
+    fusion_yield_mj,
+    hot_spot_pressure_floor_gbar,
+    hot_spot_radius_ceiling_um,
+    hydrodynamic_efficiency,
+    ignition_condition_met,
+    in_flight_aspect_ratio,
+    level0_physics,
+    target_gain,
+)
 from scpn_icf_laser_core.plan_envelope import (
     PlanEnvelope,
     envelope_for_plan,
@@ -65,8 +90,16 @@ __all__ = [
     "APPLICABLE_CANDIDATES",
     "CATALOGUE_BINDING",
     "DIRECT_DRIVE_LPI_BOUND_W_CM2",
+    "DT_ADIABAT_COEFFICIENT",
+    "DT_FUSION_ENERGY_MEV",
+    "IGNITION_AREAL_DENSITY_G_CM2",
+    "IGNITION_ION_TEMPERATURE_KEV",
+    "LEVEL0_NON_CLAIMS",
+    "LEVEL0_SCHEMA",
+    "LEVEL0_SCHEMA_VERSION",
     "OWNED_CONFIGURATIONS",
     "CandidateProfile",
+    "CapsuleDeclaration",
     "ClockKind",
     "ClockModel",
     "ClockRelation",
@@ -78,9 +111,12 @@ __all__ = [
     "DiagnosticPlan",
     "DiagnosticPlanError",
     "FrameKind",
+    "ImplosionDeclaration",
     "LaserDriver",
+    "Level0Physics",
     "ObservabilityBinding",
     "ObservabilityClass",
+    "OperatingPoint",
     "PlanEnvelope",
     "ReferenceFrame",
     "RegistryBinding",
@@ -89,10 +125,20 @@ __all__ = [
     "__version__",
     "configuration_from_bytes",
     "configuration_from_record",
+    "convergence_ratio",
+    "dt_adiabat",
     "envelope_for_plan",
     "envelope_from_bytes",
     "envelope_from_record",
+    "fusion_yield_mj",
+    "hot_spot_pressure_floor_gbar",
+    "hot_spot_radius_ceiling_um",
+    "hydrodynamic_efficiency",
+    "ignition_condition_met",
+    "in_flight_aspect_ratio",
+    "level0_physics",
     "plan_from_bytes",
     "plan_from_record",
+    "target_gain",
     "verify_envelope",
 ]
