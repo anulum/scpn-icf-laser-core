@@ -42,7 +42,7 @@ from scpn_icf_laser_core.plan_envelope import (
 )
 
 FIXTURE = Path(__file__).parent / "data" / "plan_envelope_fixture.json"
-FIXTURE_SHA256 = "755424a08f68314fbc416e730e8f1211f8e40f89c2d959a523334e394774d3ed"
+FIXTURE_SHA256 = "7f4143edcaadfc9f9f52b46332b1fef2910b6f1cd9313bf30e1e5c8023d6eba8"
 
 
 def fixture_document() -> dict[str, Any]:
