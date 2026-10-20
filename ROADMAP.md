@@ -5,61 +5,14 @@ Commercial license available
 © Code 2020–2026 Miroslav Šotek. All rights reserved.
 ORCID: 0009-0009-3560-0851
 Contact: www.anulum.li | protoscience@anulum.li
-SCPN ICF Laser Core — ROADMAP
+SCPN ICF LASER CORE — research milestones
 -->
 
 # Roadmap
 
-Planned work and implemented capability are kept strictly separate. Anything
-listed under "Planned" carries no implementation, no code, and no claim in
-this repository until it appears in the capability inventory with evidence.
+Planned milestones; completion depends on published evidence and validation.
 
-## Implemented (repository infrastructure, not reactor capability)
-
-- Domain manifest (`reactor-domain.json`) with validator.
-- Derived Studio portfolio descriptor (`not_federated`) with drift check.
-- Generated capability inventory (truthfully empty) with drift check.
-- CONTROL adapter specification (contract only, no implementation).
-- Local and workflow gate definitions (lint, typing, tests, coverage,
-  REUSE, security audit, SBOM, documentation checks).
-
-- **Device configuration model** (landed 2026-08-31) — validated
-  laser-driver and target objects for `laser_icf_direct_drive`,
-  `laser_icf_fast_or_shock_ignition`, and `laser_icf_indirect_drive`
-  with hard drive-scheme class invariants (hohlraum and ignitor-pulse
-  flags), the on-target intensity relation, a direct-drive LPI advisory
-  (Craxton et al. 2015), canonical digests, and the SPO registry data
-  pin; `computational_prototype` (ADR 0002,
-  `VALIDATION.md#device-configuration-model`). Pulse-shape and
-  beam-geometry envelopes remain future work under the same capability.
-- **Diagnostic and clock semantics** (landed 2026-08-31) — synthetic
-  diagnostic-channel and clock declarations aligned fail-closed with the
-  pinned SPO observability-profile catalogue (release `1.0.0`): candidate
-  applicability, carrier admissibility, exact evidence vocabularies,
-  clock-kind compatibility, Nyquist and event-timing bounds, canonical
-  digests; the reference plan mirrors canonical practice
-  (beam-timing train, trajectory radiography, asymmetry mode set, shot-outcome set, synthetic oscillator); `computational_prototype` (ADR 0003,
-  `VALIDATION.md#diagnostic-and-clock-semantics`). No ingress is
-  declared; the SPO semantic-profile state remains `not_declared`.
-
-## Planned (no implementation exists; ordering is not a commitment)
-1. **Safety-envelope declaration** — machine-readable operational envelope
-   (fluence, repetition, target-handling bounds) consumed by the CONTROL
-   adapter contract.
-2. **CONTROL adapter implementation** — device-owned adapter against the
-   published specification, with replay fixtures and HIL evidence,
-   targeting `control_research_ready` only after replay and HIL
-   acceptance.
-3. **Solver seam consumption** — versioned consumption of exact
-   `SCPN-FUSION-CORE` seams for implosion, radiation-transport, and burn
-   surfaces, strictly after the family migration gate proves exact
-   replacement; no solver code is copied.
-4. **Facility-data correlation** — preregistered acceptance contracts
-   against identified facility or published experimental data, targeting
-   `experiment_correlated` per capability.
-
-## Not planned in this repository
-
-Ion-beam and electron-beam ICF, projectile/impact ICF, MagLIF, magnetic
-confinement systems, generic controller mathematics, machine-protection
-logic, and any direct actuation path.
+1. Establish reference cases and source support for laser-driven capsule and implosion studies.
+2. Validated energy coupling and target performance comparisons.
+3. Independently assess prediction accuracy and uncertainty against held-out reference cases.
+4. Provide reproducible design studies, understandable results and documented integration.
