@@ -75,8 +75,9 @@ from scpn_icf_laser_core.physics.yield_and_gain import (  # noqa: E402
 SCHEMA: Final = "scpn-icf-laser-core.level0-physics-benchmark.v1"
 NATIVE_STATUS: Final = (
     "unavailable: this package has no native crate; the level-0 kernels use "
-    "+ - * /, the correctly rounded sqrt and the platform pow (cubes and the "
-    "real power 5/3), and the native decision of audit plan Q01 awaits the owner"
+    "+ - * /, the correctly rounded sqrt and the platform pow (cubes and "
+    "the real power 5/3), and the decision on a native backend is open with "
+    "the project owner"
 )
 
 
