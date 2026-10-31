@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-10-31T04:11:34.192275+00:00",
+  "label": "local",
+  "parameters": {
+    "points": 20000,
+    "record_points": 2000,
+    "repeats": 20,
+    "warmup": 3
+  },
+  "platform": {
+    "commit": "32b935deb5dbf8a397cfd2e32e2cc861b64e9ee0",
+    "cpu_model": "11th Gen Intel(R) Core(TM) i5-11600K @ 3.90GHz",
+    "isolated_cores": false,
+    "load_average_1min_at_start": "2.56",
+    "machine": "x86_64",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "results": [
+    {
+      "backend": "python_floor",
+      "name": "closed_forms",
+      "stats": {
+        "max_us_per_point": 2.14545835,
+        "mean_us_per_point": 1.5123660600000002,
+        "min_us_per_point": 1.38175435,
+        "p50_us_per_point": 1.50318655,
+        "p95_us_per_point": 1.562343,
+        "p99_us_per_point": 2.14545835,
+        "throughput_points_per_s": 665253.4244668435
+      },
+      "status": "measured"
+    },
+    {
+      "backend": "rust_native",
+      "name": "closed_forms",
+      "stats": null,
+      "status": "unavailable: this package has no native crate; the level-0 kernels use + - * /, the correctly rounded sqrt and the platform pow (cubes and the real power 5/3), and the native decision of audit plan Q01 awaits the owner"
+    },
+    {
+      "backend": "python_floor",
+      "name": "level0_record",
+      "stats": {
+        "max_us_per_point": 37.361095999999996,
+        "mean_us_per_point": 31.9432035,
+        "min_us_per_point": 27.7394915,
+        "p50_us_per_point": 31.980179,
+        "p95_us_per_point": 36.091888,
+        "p99_us_per_point": 37.361095999999996,
+        "throughput_points_per_s": 31269.36844224668
+      },
+      "status": "measured"
+    },
+    {
+      "backend": "rust_native",
+      "name": "level0_record",
+      "stats": null,
+      "status": "unavailable: this package has no native crate; the level-0 kernels use + - * /, the correctly rounded sqrt and the platform pow (cubes and the real power 5/3), and the native decision of audit plan Q01 awaits the owner"
+    }
+  ],
+  "schema": "scpn-icf-laser-core.level0-physics-benchmark.v1"
+}

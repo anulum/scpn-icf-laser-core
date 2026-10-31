@@ -24,6 +24,7 @@ path = [
     "docs/assets/repo_header_drive_schemes.png",
     "docs/assets/repo_header_lpi_bound.png",
     ".github/FUNDING.yml",
+    "benchmarks/results/level0_physics.local.json",
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = [
