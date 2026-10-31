@@ -35,8 +35,8 @@ from scpn_icf_laser_core.physics.yield_and_gain import (
 def test_the_dt_specific_energy_is_built_from_its_parts() -> None:
     """The constant is derived, so it can be checked rather than trusted.
 
-    17.6 MeV per deuteron-triton pair, over the mass of that pair, is
-    3.376e11 joules per gram. A wrong nuclear mass or a wrong reaction
+    17.6 MeV per deuterium-tritium atom pair, over the mass of that pair, is
+    3.376e11 joules per gram. A wrong atomic mass or a wrong reaction
     energy moves this number, which is the point of building it rather
     than quoting it.
     """
@@ -156,3 +156,30 @@ def test_a_non_finite_density_is_refused() -> None:
     """Non-finite input is rejected, never clamped."""
     with pytest.raises(DeviceConfigurationError, match="must be finite"):
         spherical_shell_mass_mg(100.0, 10.0, math.nan)
+
+
+def test_the_constants_are_the_documented_editions() -> None:
+    """Atom masses, CODATA 2018 mass unit and proton mass, a rounded Q-value.
+
+    The reference values are CODATA 2022 as SciPy 1.17.1 serves them (atom
+    = nucleus plus one electron); each offset is the one the modules state.
+    """
+    from scpn_icf_laser_core.physics.ignition import PROTON_MASS_KG
+    from scpn_icf_laser_core.physics.yield_and_gain import (
+        ATOMIC_MASS_UNIT_KG,
+        DEUTERIUM_ATOM_MASS_U,
+        DT_FUSION_ENERGY_MEV,
+        TRITIUM_ATOM_MASS_U,
+    )
+
+    def relative(value: float, reference: float) -> float:
+        return (value - reference) / reference
+
+    assert 3.0e-9 < relative(DEUTERIUM_ATOM_MASS_U, 2.014101792453044) < 4.5e-9
+    assert -3.5e-8 < relative(TRITIUM_ATOM_MASS_U, 3.016049295879044) < -3.0e-8
+    assert -1.5e-9 < relative(ATOMIC_MASS_UNIT_KG, 1.66053906892e-27) < -1.3e-9
+    assert -1.5e-9 < relative(PROTON_MASS_KG, 1.67262192595e-27) < -1.3e-9
+    assert 6.0e-4 < relative(DT_FUSION_ENERGY_MEV, 17.589247903765397) < 6.2e-4
+    nuclear_pair = 2.013553212544 + 3.01550071597
+    atom_pair = DEUTERIUM_ATOM_MASS_U + TRITIUM_ATOM_MASS_U
+    assert 2.1e-4 < relative(atom_pair, nuclear_pair) < 2.3e-4

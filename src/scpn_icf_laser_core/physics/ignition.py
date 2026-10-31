@@ -46,6 +46,9 @@ HOT_SPOT_PRESSURE_AT_REFERENCE_GBAR: Final = 100.0
 HOT_SPOT_PRESSURE_COEFFICIENT_GBAR: Final = 250.0
 HOT_SPOT_ENERGY_SCALE_KJ: Final = 10.0
 DT_PRESSURE_MASS_FACTOR: Final = 2.5
+#: Proton mass in kilograms: CODATA 2018, 1.4e-9 relative below the CODATA
+#: 2022 value 1.67262192595e-27; kept, far below the precision of the
+#: printed coefficients it enters with.
 PROTON_MASS_KG: Final = 1.67262192369e-27
 KEV_IN_JOULES: Final = 1.602176634e-16
 GBAR_IN_PASCAL: Final = 1.0e14

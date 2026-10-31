@@ -31,6 +31,13 @@ SCPN ICF Laser Core — CHANGELOG
 
 ### Changed
 
+- The physical constants name their edition: the D-T specific energy is
+  built from the masses of the neutral deuterium and tritium atoms (named
+  as nuclear masses until now; a gram of fuel carries its electrons), the
+  mass unit and the proton mass are CODATA 2018, and 17.6 MeV is the CODATA
+  2022 Q-value at three figures; each offset is stated and test-bound. No
+  value or output changes.
+
 - `scpn_icf_laser_core.observability` is now a package with one module per
   responsibility — vocabulary, catalogue binding, frames, clocks, signals and
   channels, plan composition, record parsing — behind the unchanged public

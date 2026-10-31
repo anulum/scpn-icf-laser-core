@@ -10,8 +10,10 @@
 
 Three definitions and one physical constant. The constant is the energy
 DT releases per unit mass, built from the reaction energy and the masses
-of the two nuclei rather than quoted as a number, so that it can be
-read and checked instead of trusted.
+of the two neutral atoms rather than quoted as a number, so that it can
+be read and checked instead of trusted. Atomic masses, not nuclear ones,
+because a gram of fuel carries its electrons; the difference is 2.2e-4
+relative.
 
 **A recorded non-recovery.** The filed review states, for its reference
 design, a burnup fraction of 20 % and a one-dimensional gain of 48. That
@@ -34,9 +36,19 @@ from typing import Final
 from scpn_icf_laser_core.errors import DeviceConfigurationError
 from scpn_icf_laser_core.parameters import require_positive
 
+#: Energy released by one D + T -> alpha + n reaction, in MeV: the CODATA
+#: 2022 Q-value (17.5892 MeV) at three figures, 6.1e-4 relative high.
 DT_FUSION_ENERGY_MEV: Final = 17.6
-DEUTERON_MASS_U: Final = 2.0141018
-TRITON_MASS_U: Final = 3.0160492
+#: Masses of the neutral deuterium and tritium atoms, in atomic mass units,
+#: at eight figures (CODATA 2022 nuclear masses plus one electron give
+#: 2.0141017925 and 3.0160492959: deuterium rounds, 3.7e-9 relative high;
+#: tritium is truncated, 3.2e-8 relative low). Until 2026-10-31 these were
+#: named as nuclear masses.
+DEUTERIUM_ATOM_MASS_U: Final = 2.0141018
+TRITIUM_ATOM_MASS_U: Final = 3.0160492
+#: Atomic mass unit in kilograms: CODATA 2018, 1.4e-9 relative below the
+#: CODATA 2022 value 1.66053906892e-27; kept, its effect is below every
+#: printed figure this module is checked against.
 ATOMIC_MASS_UNIT_KG: Final = 1.66053906660e-27
 MEV_IN_JOULES: Final = 1.602176634e-13
 MICROMETRE_IN_CM: Final = 1.0e-4
@@ -47,7 +59,8 @@ JOULE_IN_MEGAJOULE: Final = 1.0e-6
 def dt_specific_energy_j_per_g() -> float:
     """Return the energy an equimolar DT mixture releases per gram burnt.
 
-    The reaction energy divided by the mass of one deuteron-triton pair.
+    The reaction energy divided by the mass of one deuterium-tritium atom
+    pair.
     Built from its parts rather than quoted, so the value can be checked
     against the constants above.
 
@@ -56,7 +69,9 @@ def dt_specific_energy_j_per_g() -> float:
     float
         Joules per gram of DT consumed.
     """
-    pair_mass_g = (DEUTERON_MASS_U + TRITON_MASS_U) * ATOMIC_MASS_UNIT_KG * 1.0e3
+    pair_mass_g = (
+        (DEUTERIUM_ATOM_MASS_U + TRITIUM_ATOM_MASS_U) * ATOMIC_MASS_UNIT_KG * 1.0e3
+    )
     return DT_FUSION_ENERGY_MEV * MEV_IN_JOULES / pair_mass_g
 
 
