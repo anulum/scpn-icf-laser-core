@@ -123,8 +123,13 @@ What is exercised, all under the 100 % statement-and-branch coverage gate:
   release is rejected.
 - A reference plan mirroring canonical practice with synthetic
   declarations: beam-timing train, trajectory radiography, asymmetry mode set, shot-outcome set, synthetic oscillator, each bound to its clock domain.
-- Documented advisory band and timing checks with their sources stated
-  in the code: implosion-asymmetry bands of 1 MHz–10 GHz and tens-of-ps beam timing (Lindl 1995); findings are reported, never clamped.
+- Advisory checks against declared synthetic design bounds: an
+  implosion-asymmetry band of 1 MHz–10 GHz, a 100 ps beam-timing bound and a
+  ~1 µs shot-duration bound. They were earlier credited to J. D. Lindl,
+  Phys. Plasmas 2 (1995) 3933, which is not on file (the filed 1994
+  precursor and Craxton 2015 do not print these bounds), so they were never
+  checked against it; the attribution was removed (2026-10-31). Findings are
+  reported, never clamped.
 - Canonical serialisation (sorted keys, NaN/infinity rejected on both
   emit and parse), SHA-256 digest identity, and a strict round-trip
   parser that refuses unknown fields.

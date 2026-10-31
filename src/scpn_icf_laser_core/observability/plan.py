@@ -428,9 +428,9 @@ class DiagnosticPlan:
                         message=(
                             "declared asymmetry-mode band "
                             f"{channel.max_signal_frequency_hz:.1f} "
-                            "Hz is outside the ns-scale implosion "
-                            "asymmetry evolution range 1 MHz-10 GHz "
-                            "(Lindl 1995)"
+                            "Hz is outside the declared implosion-asymmetry "
+                            "design band 1 MHz-10 GHz (synthetic; not "
+                            "checked against a source on file)"
                         ),
                     )
                 )
@@ -444,9 +444,9 @@ class DiagnosticPlan:
                         field=f"channels[{channel.identifier}].timing_uncertainty_s",
                         message=(
                             f"timing uncertainty {channel.timing_uncertainty_s:.2e} s"
-                            " is coarser than the tens-of-ps "
-                            "beam-timing precision of laser drivers "
-                            "(Lindl 1995)"
+                            " is coarser than the declared 100 ps "
+                            "beam-timing design bound (synthetic; not "
+                            "checked against a source on file)"
                         ),
                     )
                 )
@@ -457,8 +457,8 @@ class DiagnosticPlan:
                         message=(
                             "acquisition window "
                             f"{channel.acquisition_duration_s:.2e} s is "
-                            "longer than the laser-ICF shot scale of up to ~1 "
-                            "us (Lindl 1995)"
+                            "longer than the declared ~1 us shot-duration bound "
+                            "(synthetic; not checked against a source on file)"
                         ),
                     )
                 )
