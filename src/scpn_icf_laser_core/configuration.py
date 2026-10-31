@@ -10,15 +10,22 @@
 
 A :class:`DeviceConfiguration` composes a validated laser driver and
 target declaration under exactly one of the three registry identifiers
-this repository owns. The drive-scheme class invariants are hard: the
-hohlraum separates indirect from direct drive (Lindl, PoP 2 (1995)
-3933) and the ignitor pulse defines fast/shock ignition (Tabak et al.,
-PoP 1 (1994) 1626). A direct-drive intensity above the documented
-laser-plasma-instability bound is flagged (Craxton et al., PoP 22
-(2015) 110501). Serialisation is canonical (sorted keys, no NaN or
-infinity accepted anywhere) and the SHA-256 digest of those bytes
-identifies the exact parameter set. The registry binding is a data pin
-only — this package never imports SCPN Phase Orchestrator code.
+this repository owns. The drive-scheme class invariants are hard. The
+filed review R. S. Craxton et al., Phys. Plasmas 22 (2015) 110501,
+describes indirect drive as heating the inside of an enclosure known as
+a hohlraum (accepted manuscript, PDF p. 8), fast ignition as separating
+the compression and ignition phases with a high-intensity laser (Sec.
+XIV, PDF p. 261), and shock ignition as a hot-spot pulse with an added
+high-intensity spike (Sec. XV, PDF p. 285); Lindl, PoP 2 (1995) 3933,
+and Tabak et al., PoP 1 (1994) 1626, are not on file. A direct-drive
+intensity above a declared 10^15 W/cm^2 bound is flagged; the review
+states no single bound, prints an ignition design at a peak intensity of
+8 x 10^14 W/cm^2 (Sec. III A, PDF p. 20) and reports stimulated Raman
+backscatter rising from about 8 % at 0.9 x 10^15 W/cm^2 to about 36 % at
+8 x 10^15 W/cm^2 (PDF p. 296). Serialisation is canonical (sorted keys,
+no NaN or infinity accepted anywhere) and the SHA-256 digest of those
+bytes identifies the exact parameter set. The registry binding is a data
+pin only — this package never imports SCPN Phase Orchestrator code.
 """
 
 from __future__ import annotations
@@ -180,8 +187,8 @@ class DeviceConfiguration:
         Returns
         -------
         tuple of ConsistencyFinding
-            Advisory findings from the documented estimates; empty when
-            a direct-drive intensity sits below the documented
+            Advisory findings from the declared estimates; empty when
+            a direct-drive intensity sits below the declared
             laser-plasma-instability bound. Findings are advisory
             instruments, not machine claims.
         """
@@ -194,7 +201,7 @@ class DeviceConfiguration:
                         field="driver.driver_energy_mj",
                         message=(
                             f"on-target intensity {intensity:.3g} W/cm^2 "
-                            "exceeds the documented direct-drive "
+                            "exceeds the declared direct-drive "
                             "laser-plasma-instability bound "
                             f"{DIRECT_DRIVE_LPI_BOUND_W_CM2:.0e} W/cm^2"
                         ),

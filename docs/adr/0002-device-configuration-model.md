@@ -36,16 +36,22 @@ laser-ICF registry configurations this repository owns
    parameter set is a synthetic test fixture.
 3. Hard drive-scheme class invariants: `laser_icf_indirect_drive`
    requires a hohlraum and `laser_icf_direct_drive` forbids one — the
-   presence of the radiation enclosure is what separates the schemes
-   (J. D. Lindl, Phys. Plasmas 2 (1995) 3933);
+   presence of the radiation enclosure is what separates the schemes;
    `laser_icf_fast_or_shock_ignition` requires the separate ignitor
-   pulse that defines it (M. Tabak et al., Phys. Plasmas 1 (1994)
-   1626), and the other two classes forbid it.
+   pulse that defines it, and the other two classes forbid it. The
+   filed review R. S. Craxton et al., Phys. Plasmas 22 (2015) 110501,
+   describes indirect drive through a hohlraum (PDF p. 8), fast
+   ignition as separate compression and ignition phases (Sec. XIV,
+   PDF p. 261) and shock ignition as an added high-intensity spike
+   (Sec. XV, PDF p. 285).
 4. Derived quantity: the sphere-averaged on-target intensity
    ``I = E / (tau 4 pi R^2)``. Advisory finding, reported by
    `consistency_report()` and never clamped: a direct-drive intensity
-   above ``10^15 W/cm^2``, where laser-plasma instabilities dominate
-   (R. S. Craxton et al., Phys. Plasmas 22 (2015) 110501).
+   above a declared ``10^15 W/cm^2`` bound. Craxton et al. state no
+   single bound; they print an ignition design at 8 x 10^14 W/cm^2
+   (Sec. III A, PDF p. 20) and stimulated Raman backscatter rising from
+   about 8 % at 0.9 x 10^15 to about 36 % at 8 x 10^15 W/cm^2
+   (PDF p. 296).
 5. Repository-level `evidence_maturity` = the highest state claimed by
    any capability entry; per-capability states are the authoritative
    claim surface.
@@ -64,3 +70,14 @@ laser-ICF registry configurations this repository owns
   bang-time anchor, safety envelope) build on these types; maturity
   advances per capability only with the evidence the family standard
   requires.
+
+## Amendment 2026-10-31
+
+The class invariants were credited to J. D. Lindl, Phys. Plasmas 2
+(1995) 3933, and M. Tabak et al., Phys. Plasmas 1 (1994) 1626, neither
+of which is on file; they are now bound to pages of the filed Craxton et
+al. (2015) review. The text also said that laser-plasma instabilities
+"dominate" above 10^15 W/cm^2 and credited that to Craxton et al.; the
+review prints no such single bound, so the bound is named declared and
+the printed values beside it are quoted. No invariant, value or check
+changed.

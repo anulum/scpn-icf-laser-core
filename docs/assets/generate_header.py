@@ -21,7 +21,7 @@ Outputs (written next to this script):
 - ``repo_header_drive_schemes.png`` — direct, indirect and fast/shock
   ignition side by side.
 - ``repo_header_lpi_bound.png`` — the shaped pulse under the
-  documented laser-plasma-instability bound.
+  declared laser-plasma-instability bound.
 
 Generation-time tooling only: requires ``numpy`` and ``matplotlib``,
 which are deliberately not part of the pinned development lock. Run as
@@ -50,9 +50,9 @@ WIDTH_IN, HEIGHT_IN, DPI = 12.8, 6.4, 100
 
 TITLE_METRICS: list[tuple[str, str]] = [
     ("Device Configurations", "direct · indirect · fast/shock"),
-    ("Hohlraum Invariant", "separates indirect (Lindl, PoP 1995)"),
-    ("Ignitor Invariant", "defines fast/shock (Tabak, PoP 1994)"),
-    ("LPI Bound", "direct intensity flagged (Craxton 2015)"),
+    ("Hohlraum Invariant", "separates indirect (Craxton 2015)"),
+    ("Ignitor Invariant", "defines fast/shock (Craxton 2015)"),
+    ("LPI Bound", "declared 1e15 W/cm² flagged"),
     ("Plan Envelope", "v1.1.0 · synthetic · review-only"),
     ("Quality Gates", "100% branch cov · mypy --strict"),
 ]
@@ -402,7 +402,7 @@ def generate_drive_schemes() -> None:
     ax.text(
         centre,
         -2.0,
-        "hohlraum X-ray bath · Lindl 1995",
+        "hohlraum X-ray bath · Craxton 2015",
         color="#445566",
         fontsize=7.5,
         fontfamily="monospace",
@@ -469,7 +469,7 @@ def generate_drive_schemes() -> None:
     ax.text(
         centre,
         -2.0,
-        "staged drive · Tabak 1994",
+        "staged drive · Craxton",
         color="#445566",
         fontsize=7.5,
         fontfamily="monospace",
@@ -537,7 +537,7 @@ def generate_lpi_bound() -> None:
     ax.text(
         8.9,
         y_bound + 0.3,
-        "documented LPI bound",
+        "declared LPI bound",
         color=RED,
         fontsize=8.5,
         fontfamily="monospace",
@@ -590,14 +590,14 @@ def generate_lpi_bound() -> None:
     ax.text(
         5.0,
         0.75,
-        "declared pulse checked against the documented bound · "
+        "declared pulse checked against the declared bound · "
         "Craxton et al., PoP 22 (2015) 110501",
         color="#445566",
         fontsize=8,
         fontfamily="monospace",
         ha="center",
     )
-    _text_panel(fig, "Intensity Under A Documented Bound")
+    _text_panel(fig, "Intensity Under A Declared Bound")
     _save(fig, plt, "repo_header_lpi_bound.png")
 
 

@@ -11,9 +11,9 @@
 The derived quantity implements one standard estimate and nothing more:
 the sphere-averaged on-target intensity ``I = E / (tau 4 pi R^2)``. It
 is a rough consistency instrument with documented applicability bounds
-(direct-drive laser-plasma-instability regime; R. S. Craxton et al.,
-Phys. Plasmas 22 (2015) 110501); no claim about any real machine follows
-from it.
+(a declared direct-drive laser-plasma-instability bound; see the
+configuration module and the filed R. S. Craxton et al., Phys. Plasmas
+22 (2015) 110501); no claim about any real machine follows from it.
 """
 
 from __future__ import annotations

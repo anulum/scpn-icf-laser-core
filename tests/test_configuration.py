@@ -102,6 +102,7 @@ def test_consistency_report_clean_and_finding() -> None:
     findings = hot.consistency_report()
     assert len(findings) == 1
     assert "laser-plasma-instability" in findings[0].message
+    assert "declared direct-drive" in findings[0].message
     indirect = synthetic_configuration(
         "laser_icf_indirect_drive", hohlraum=True, pulse_duration_ns=1.0
     )

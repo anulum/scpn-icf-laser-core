@@ -81,14 +81,18 @@ What is exercised, all under the 100 % statement-and-branch coverage gate:
   `TargetDeclaration`, `DeviceConfiguration`) rejecting non-finite
   values, non-positive extents, and the hard drive-scheme class
   invariants: hohlraum required for indirect drive and forbidden for
-  direct drive (Lindl, Phys. Plasmas 2 (1995) 3933), and the ignitor
-  pulse exactly for fast/shock ignition (Tabak et al., Phys. Plasmas 1
-  (1994) 1626) — every rejection branch is tested.
+  direct drive, and the ignitor pulse exactly for fast/shock ignition
+  (all three schemes as described in the filed Craxton et al. 2015
+  review, PDF pp. 8, 261 and 285; the Lindl 1995 and Tabak 1994 credits,
+  not on file, were removed on 2026-10-31) — every rejection branch is
+  tested.
 - The sphere-averaged on-target intensity `I = E / (tau 4 pi R^2)` as a
   documented derived quantity, with an advisory finding for direct-drive
-  intensities above the documented laser-plasma-instability bound
-  `1e15 W/cm^2` (Craxton et al., Phys. Plasmas 22 (2015) 110501),
-  reported and never clamped.
+  intensities above the declared laser-plasma-instability bound
+  `1e15 W/cm^2` (Craxton et al., Phys. Plasmas 22 (2015) 110501, print
+  no single bound: an ignition design at 8e14 W/cm^2, PDF p. 20, and SRS
+  backscatter of about 8 % at 0.9e15 and 36 % at 8e15 W/cm^2, PDF
+  p. 296), reported and never clamped.
 - Canonical serialisation (sorted keys, NaN/infinity rejected on both
   emit and parse), SHA-256 digest identity, and a strict round-trip
   parser that refuses unknown fields.
