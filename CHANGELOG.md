@@ -31,6 +31,9 @@ SCPN ICF Laser Core — CHANGELOG
 
 ### Changed
 
+- The test fixtures name the page of the filed review and lecture that
+  prints every anchor. No value changes.
+
 - The physical constants name their edition: the D-T specific energy is
   built from the masses of the neutral deuterium and tritium atoms (named
   as nuclear masses until now; a gram of fuel carries its electrons), the

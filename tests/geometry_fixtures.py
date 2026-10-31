@@ -57,7 +57,8 @@ from scpn_icf_laser_core.geometry import (
     HohlraumEnvelope,
 )
 
-# --- Lindl 1994 (UCRL-JC-115197), the related public precursor ---
+# --- Lindl 1994 (UCRL-JC-115197), the related public precursor: the ratio in
+# the Fig. 10 box (PDF p. 29), the area range on PDF p. 4 ---
 PRINTED_CASE_TO_CAPSULE_RADIUS_RATIO: Final = 4.0
 PRINTED_HOHLRAUM_AREA_RATIO_RANGE: Final = (15.0, 25.0)
 

@@ -40,7 +40,7 @@ from scpn_icf_laser_core.physics.level0 import (
     ImplosionDeclaration,
 )
 
-# --- Craxton et al. 2015, Sec. III A: the reference design's geometry ---
+# --- Craxton et al. 2015, Sec. III A (filed PDF p. 20): the design geometry ---
 PRINTED_INCIDENT_ENERGY_MJ: Final = 1.5
 PRINTED_TARGET_RADIUS_UM: Final = 1700.0
 PRINTED_ABLATOR_THICKNESS_UM: Final = 37.0
@@ -49,7 +49,7 @@ PRINTED_VAPOUR_DENSITY_MG_CM3: Final = 0.6
 PRINTED_WAVELENGTH_UM: Final = 0.35
 PRINTED_PEAK_INTENSITY_W_CM2: Final = 8.0e14
 
-# --- Craxton et al. 2015, Sec. III A: derived figures the review states ---
+# --- Craxton et al. 2015, Sec. III A (PDF pp. 24-26, 30): derived figures ---
 PRINTED_SHELL_KINETIC_ENERGY_KJ: Final = 100.0
 PRINTED_ABSORBED_FRACTION: Final = 0.95
 PRINTED_HYDRODYNAMIC_EFFICIENCY: Final = 0.067
@@ -61,7 +61,7 @@ PRINTED_ONE_DIMENSIONAL_GAIN: Final = 48.0
 PRINTED_HOT_SPOT_PRESSURE_GBAR: Final = 215.0
 PRINTED_COUPLED_FRACTION_RANGE: Final = (0.4, 0.5)
 
-# --- Craxton et al. 2015, Sec. III B: the equation coefficients ---
+# --- Craxton et al. 2015, Sec. III B (PDF pp. 29-30): equation coefficients ---
 PRINTED_EQ36_COEFFICIENT_GBAR: Final = 100.0
 PRINTED_EQ36_REFERENCE_RADIUS_UM: Final = 100.0
 PRINTED_EQ37_COEFFICIENT_GBAR: Final = 250.0
