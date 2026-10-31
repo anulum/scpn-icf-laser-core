@@ -62,7 +62,7 @@ REQUIRED_PATHS = (
     "src/scpn_icf_laser_core/__init__.py",
     "src/scpn_icf_laser_core/configuration.py",
     "src/scpn_icf_laser_core/errors.py",
-    "src/scpn_icf_laser_core/observability.py",
+    "src/scpn_icf_laser_core/observability/__init__.py",
     "src/scpn_icf_laser_core/plan_envelope.py",
     "tests/data/plan_envelope_fixture.json",
     "src/scpn_icf_laser_core/parameters.py",
